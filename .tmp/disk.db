@@ -1,0 +1,53 @@
+{
+  "data": {
+    "user": [
+      {
+        "username": "Admin",
+        "email": "admin@teamode.com",
+        "password": "i23456",
+        "createdAt": "2014-05-27T13:25:17.356Z",
+        "updatedAt": "2014-05-27T13:25:17.356Z",
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "user": {
+      "username": {
+        "type": "string"
+      },
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "defaultsTo": "AUTO_INCREMENT",
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime",
+        "default": "NOW"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "default": "NOW"
+      }
+    }
+  },
+  "counters": {
+    "user": {
+      "id": 1
+    }
+  }
+}
