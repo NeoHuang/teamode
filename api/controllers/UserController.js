@@ -35,7 +35,41 @@ module.exports = {
 	  	res.view();
   	}
   	else {
-  		res.forbidden('Todo');
+      var username = req.param("username");
+      var password = req.param('password');
+      var firstName = req.param('firstName');
+      var lastName = req.param('lastName');
+      var email = req.param('email');
+      User.findByUsername(username).done(function(err, usr){
+        if (err){
+          res.send(500, {error: "DB Error"});
+        } else if (usr.length > 0){
+          console.log(usr);
+          res.send(400, {error: "Username already Taken"});
+        }
+        else {
+          var hasher = require("password-hash");
+          password = hasher.generate(password);
+          User.create({
+            username: username,
+            password: password,
+            email: email,
+            firstName: firstName,
+            lastName: lastName
+          }).done(function(error, user) {
+            if (error){
+              console.log(error);
+              res.send(500, {error: "DB Error" + error});
+            }
+            else {
+              req.session.user = user;
+              res.send(user);
+            }
+          })
+
+        }
+
+      })
   	}
   },
 
