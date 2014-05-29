@@ -13,30 +13,30 @@ module.exports = {
   	username: {
   		type: 'string',
   		maxLength: 20,
-  		minLength: 5,
+  		minLength: 3,
   		required: true
   	},
 
   	firstname: {
   		type: 'string',
   		maxLength: 20,
-  		minLength: 5,
+  		minLength: 3,
   	},
 
   	lastname: {
   		type: 'string',
   		maxLength: 20,
-  		minLength: 5,
+  		minLength: 3,
   	},
   	
   	password: {
-  		type: 'string'
+  		type: 'string',
   	},
 
   	email: {
   		type:'email',
   		required: true
-  	},
+  	}
 
   	/* e.g.
   	nickname: 'string'
