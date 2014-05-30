@@ -157,6 +157,7 @@ module.exports = {
           if (hasher.verify(reqUser.password, user.password)){
             delete user.password;
             req.session.user = user;
+            sails.log.info("session" + JSON.stringify(req.session.user));
             res.json(user);
           }
           else {
@@ -172,7 +173,7 @@ module.exports = {
 
  getLogin: function(req, res){
     if (req.session.user){
-      res.redirect('/', 301);
+      res.redirect('/');
     }
     else {
       res.view('user/login');
@@ -181,9 +182,8 @@ module.exports = {
  },
 
  logout: function (req, res){
-    req.session.destroy(function(){
-      res.redirect('/', 301);
-    });
+    delete req.session.user;
+    res.json({status: "OK"});
  }
 
 
