@@ -98,7 +98,7 @@ module.exports = {
         if (newUser.username && 
           newUser.password &&
           newUser.email){
-
+          newUser.username = newUser.username.toLowerCase();
           if (!(/^[a-z0-9_-]{3,20}$/.test(newUser.username))){
             sails.log.error("username:" + newUser.username + " format not correct");
             res.json({error: "invalid username format"});
@@ -118,8 +118,8 @@ module.exports = {
           return createNewUser(newUser)
         })
         .done(function(user){
-          req.session.user = user.id;
           delete user.password;
+          req.session.user = user;
           res.json(user);
         }, function(error){
           res.json({error: error}) ;
@@ -138,7 +138,52 @@ module.exports = {
 
 
   login: function (req, res){
-   res.forbidden('Todo');
+    var reqUser = {
+      username:req.param("username"),
+      password: req.param("password")
+    }
+
+    if (reqUser.username && 
+        reqUser.password){
+      reqUser.username = reqUser.username.toLowerCase();
+      User.findOneByUsername(reqUser.username).done(function(err, user){
+        if (err){
+          res.json({error: "DB Error"});
+        } else if (user === undefined){
+          res.json({error: "user not exist"});
+        }
+        else {
+          var hasher = require("password-hash");
+          if (hasher.verify(reqUser.password, user.password)){
+            delete user.password;
+            req.session.user = user;
+            res.json(user);
+          }
+          else {
+            res.json({error: "password not correct"});
+          }
+        }
+      })
+    }
+    else {
+      res.json({error: "please input username and password"});
+    }
+ },
+
+ getLogin: function(req, res){
+    if (req.session.user){
+      res.redirect('/', 301);
+    }
+    else {
+      res.view('user/login');
+    }
+
+ },
+
+ logout: function (req, res){
+    req.session.destroy(function(){
+      res.redirect('/', 301);
+    });
  }
 
 

@@ -1,11 +1,12 @@
 module.exports = {
 
 	index: function(req, res){
+		sails.log.info(JSON.stringify(req.session.user));
 		if (req.session.user){
-			res.view();
+			res.view('home/dashboard');
 		}
 		else {
-			res.send(404, "todo");
+			res.redirect('/login', 301);
 		}
 	}
 	

@@ -42,9 +42,19 @@ module.exports.routes = {
     action: 'signup'
   },
 
-   '/login': {
+  'post /login': {
     controller: 'user',
     action: 'login'
+  },
+
+  'get /login': {
+    controller: 'user',
+    action: 'getLogin'
+  },
+  
+  '/logout': {
+    controller: 'user',
+    action: 'logout'
   }
 
   /*

@@ -1,4 +1,6 @@
-<div class="row">
+<script type="text/javascript" src="/js/teamodeCommon.js"></script>
+<script type="text/javascript" src="/js/loginCtrl.js"></script>
+<div class="row" ng-app="teamodeLogin">
     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 
         <div class="panel panel-info">
@@ -6,27 +8,27 @@
                 <h3 >login </h3>           
                 <div style="float:right; font-size: 80%; position: relative; top: -10px"><a href="#">Forgot password?</a></div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" ng-controller="LoginCtrl">
                 <hr class="colorgraph">
                 <form role="form">
                     <div class="form-group"> 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class= "form-control" placeholder="Username or Email" >
+                            <input type="text" class= "form-control" ng-model="user.username" placeholder="Username or Email" >
                         </div>
                     </div>
-                </form>
-                <form role="form">
                     <div class="form-group"> 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class= "form-control" placeholder="Password">
+                            <input type="password" class= "form-control" placeholder="Password" ng-model="user.password">
                         </div>
                     </div>
+                    <hr class="colorgraph">
+                        <button type="button" class="btn btn-info btn-block" ng-click="login()">Login</button>
                 </form>
-                <hr class="colorgraph">
 
             </div> 
         </div>
     </div>
 </div>
+<div id=alert class="alert alert-info fix-bottom container"></div>
