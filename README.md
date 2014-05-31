@@ -3,9 +3,11 @@ Teamode
 
 Teamode is an agile team collaborate platform
 
-#install
+#install and start
 
 Teamode is built with node.js and sails.js, in order to install, simply install node.js and then run
-<code> npm install -g sails </code><br>
-<code> node app.js </code>
+```sh
+sudo install -g sails
+node app.js
+```
 
