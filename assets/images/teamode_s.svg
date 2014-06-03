@@ -89,7 +89,7 @@
          sodipodi:cx="242.85715"
          sodipodi:sides="6"
          id="path2989-1-5-2"
-         style="fill:#0065be;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-opacity:1;stroke-width:3.32306341000000005"
+         style="fill:#80bd01;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-opacity:1;stroke-width:3.32306341"
          sodipodi:type="star"
          inkscape:export-xdpi="90"
          inkscape:export-ydpi="90"
@@ -97,8 +97,11 @@
       <path
          id="path2989-1-5-2-6-8"
          d="m 396.51753,356.90049 -25.81893,14.90508 0,16.43843 19.66298,-11.34229 0,35.80827 6.15595,3.56278 6.90009,-3.99122 0,-34.9514 18.91885,10.91386 0,-16.43843 -25.81894,-14.90508 z"
-         style="fill:#00a8aa;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.72157723;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
-         inkscape:connector-curvature="0" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.72157722999999985;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"
+         inkscape:export-filename="/home/neo/teamode/assets/images/teamode_s.png" />
     </g>
   </g>
 </svg>
