@@ -43,7 +43,7 @@
 
   </head>
 
-  <body style="margin-top: 50px">
+  <body style="margin-top: 50px" ng-app="dashboardApp">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class= "container-fluid">
         <div class="navbar-header">
@@ -52,17 +52,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" style="padding:5px"><img src="/images/teamode.png" height=40></a>
+          <a class="navbar-brand" href="/" style="padding:5px"><img src="/images/teamode_s.png" height=40></a>
 
         </div>
-        <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse" ng-controller='NavCtrl' >
           <ul class="nav navbar-nav" >
             <li ><a href="/">Dashboard</a></li>
           </ul>
-
-          <ul class="nav navbar-nav navbar-right" >
+          <ul class="nav navbar-nav navbar-right"  >
             <li>
-              <button class="navbar-btn btn btn-primary">
+              <button class="navbar-btn btn btn-primary" style="margin-left: 10px">
                 <span class="glyphicon glyphicon-plus" style="font-size:16px" ></span> 
               </button>
             </li>
@@ -70,23 +69,23 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%- username %><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a style="cursor:pointer" ng-click="logout()">Logout</a></li>
               </ul>
-             </li>
+            </li>
           </ul>
           
         </div>
       </div>
     </div>
 
-  <div class="container">
-      <br>
-  <%- body %> 
-
-</div>
+    <%- body %> 
+    <script type="text/javascript" src="js/teamodeCommon.js"></script>
+    <script type="text/javascript" src="js/dashboardCtrl.js"></script>
 
 
-<!-- Include the view file for the current controller/route -->
+
+
+  <!-- Include the view file for the current controller/route -->
 
 
 

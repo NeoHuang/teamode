@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="78.109795"
+   height="89.884018"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="teamode_s.svg"
+   inkscape:export-filename="/home/neo/teamode/assets/images/teamode_s.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4647"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4649" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="-82.442392"
+     inkscape:cy="-27.069166"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4992"
+     showgrid="false"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-49.242508,-50.052501)">
+    <g
+       id="g4584" />
+    <g
+       id="g4992"
+       transform="translate(-308.22013,-291.59212)">
+      <path
+         transform="matrix(0,0.30092715,-0.30092715,0,483.63746,313.50432)"
+         d="M 315.86818,415.96387 169.8461,415.96386 96.835068,289.50503 169.84611,163.0462 l 146.02208,1e-5 73.01104,126.45883 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.5707963"
+         sodipodi:arg1="1.0471976"
+         sodipodi:r2="126.45883"
+         sodipodi:r1="146.02208"
+         sodipodi:cy="289.50504"
+         sodipodi:cx="242.85715"
+         sodipodi:sides="6"
+         id="path2989-1-5-2"
+         style="fill:#0065be;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-opacity:1;stroke-width:3.32306341000000005"
+         sodipodi:type="star"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"
+         inkscape:export-filename="/home/neo/teamode/assets/images/teamode_s.png" />
+      <path
+         id="path2989-1-5-2-6-8"
+         d="m 396.51753,356.90049 -25.81893,14.90508 0,16.43843 19.66298,-11.34229 0,35.80827 6.15595,3.56278 6.90009,-3.99122 0,-34.9514 18.91885,10.91386 0,-16.43843 -25.81894,-14.90508 z"
+         style="fill:#00a8aa;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.72157723;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

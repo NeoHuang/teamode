@@ -10,7 +10,7 @@
             </div>
             <div class="panel-body" ng-controller="LoginCtrl">
                 <hr class="colorgraph">
-                <form role="form">
+                <form role="form" ng-submit="login()">
                     <div class="form-group"> 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -27,7 +27,7 @@
                     <button type="button" class="btn btn-primary btn-block" ng-click="login()">Login</button>
                     <div style="text-align:center"><span > Or</span></div>
                     <a class="btn btn-success btn-block" href="/signup" >Register</a>
-
+                    <input type="submit" style="position: absolute; display:none; width: 1px; height: 1px;"/>
                 </form>
 
             </div> 
