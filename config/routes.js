@@ -55,6 +55,16 @@ module.exports.routes = {
   'post /logout': {
     controller: 'user',
     action: 'logout'
+  },
+
+  'get /board/list': {
+    controller: 'board',
+    action: 'list'
+  },
+
+  'post /board/add': {
+    controller: 'board',
+    action: 'add'
   }
 
   /*

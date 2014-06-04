@@ -14,7 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+var errors = require('../services/errors');
  module.exports = {
 
 
@@ -27,17 +27,37 @@
    _config: {},
 
    list: function(req, res){
+	if (req.session.user){
+		Board.listByUser(req.session.user.id).then(function(boards){
+			res.json(boards);
+		}, function(error){
+			res.json(error);
+		})
+	}
+	else {
+		res.json(errors.errLoginRequired);
+
+	}
+
+   },
+
+   add: function(req, res){
    	if (req.session.user){
-   		Board.listByUser(req.session.user.id).then(function(boards){
-   			res.json(boards);
+   		var newBoard = {
+   			name: req.param('name'),
+   			description: req.param('description'),
+   			ownerId: req.session.user.id
+   		}
+
+   		Board.add(newBoard).then(function(board){
+   			res.json(board);
    		}, function(error){
    			res.json(error);
    		})
    	}
    	else {
-   		res.json({error: 'please login first'});
-
+		res.json(errors.errLoginRequired);
    	}
 
-   },
+   }
 };

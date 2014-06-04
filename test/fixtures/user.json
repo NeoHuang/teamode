@@ -1,0 +1,32 @@
+[
+  {
+    "username": "abc",
+    "password": "sha1$80d6481f$1$3e5b9a6c8d108fd2afcce8c7ad9a1b131742c2a8",
+    "email": "stefaniewangyue@hotmail.com",
+    "firstName": "123",
+    "lastName": null,
+    "createdAt": "2014-05-30T09:37:46.616Z",
+    "updatedAt": "2014-05-30T09:37:46.616Z",
+    "id": 1
+  },
+  {
+    "username": "aadfa",
+    "password": "sha1$b6d48a18$1$c4f777225f28469bd16bb0ea8a62568bb2279532",
+    "email": "freeup_hzy@hotmail.com",
+    "firstName": "12",
+    "lastName": null,
+    "createdAt": "2014-05-30T09:55:00.223Z",
+    "updatedAt": "2014-05-30T09:55:00.223Z",
+    "id": 2
+  },
+  {
+    "username": "admin",
+    "password": "sha1$a9afd41f$1$62648bc882c07de96d468980f46df5d884083a2f",
+    "email": "admin@abc.com",
+    "firstName": "Admin",
+    "lastName": "Neo",
+    "createdAt": "2014-05-30T11:32:09.898Z",
+    "updatedAt": "2014-05-30T11:32:09.898Z",
+    "id": 3
+  }
+]

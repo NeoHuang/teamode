@@ -113,11 +113,11 @@
       newUser.username = newUser.username.toLowerCase();
       if (!(/^[a-z0-9_-]{3,20}$/.test(newUser.username))){
         sails.log.error("username:" + newUser.username + " format not correct");
-        return when.reject({error: "invalid username format"});
+        return when.reject({error: 500, message: "invalid username format"});
       }  
       if (!(/^.{6,20}$/.test(newUser.password))){
         sails.log.error("password:" + newUser.password + " format not correct");
-        return when.reject({error: "invalid password format"});
+        return when.reject({error:500, message: "invalid password format"});
       }  
 
       return when(User.checkNameNotExist(newUser.username))
@@ -131,7 +131,7 @@
     }
     else {
       sails.log.error("required information not complete " + JSON.stringify(newUser));
-      return when.reject({error:"required information not complete"});
+      return when.reject({error:500, message: "required information not complete"});
     }
   },
 

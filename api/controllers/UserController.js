@@ -28,10 +28,11 @@ module.exports = {
    * (specific to UserController)
    */
    _config: { 
-     blueprints: {
-       rest: process.env.NODE_ENV == 'development',
-       actions: process.env.NODE_ENV == 'development' 
-     }},
+     // blueprints: {
+     //   rest: process.env.NODE_ENV == 'development',
+     //   actions: process.env.NODE_ENV == 'development' 
+     // }
+   },
 
      signup: function (req, res){
        if (req.method == "GET"){

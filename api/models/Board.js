@@ -45,6 +45,27 @@ module.exports = {
    			}
    		});
   	})
+  }, 
+
+  add: function(newBoard){
+  	if (newBoard.name && 
+  		newBoard.ownerId){
+  		return when.promise(function(resolve, reject, notify){
+	      Board.create(newBoard).done(function(error, board) { 
+        if (error){
+          sails.log.error(JSON.stringify(error));
+          reject({error: 500, message: "DB error"});
+        }
+        else {
+          sails.log.info("new board:" + board.newBoard + " created")
+          resolve(board);
+        }
+      });
+    });
+  	}
+  	else {
+  		return when.reject({error: 500, message: "invalid format"});
+  	}
   }
 
 
