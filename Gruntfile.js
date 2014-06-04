@@ -146,7 +146,13 @@ module.exports = function (grunt) {
           cwd: './assets',
           src: ['**/*.!(coffee)'],
           dest: '.tmp/public'
-        }
+        },
+          {
+            cwd: './bower_components',
+            src: ['**/*'],
+            dest: '.tmp/public/vendor/',
+            expand:true
+          }
         ]
       },
       build: {
@@ -156,13 +162,20 @@ module.exports = function (grunt) {
           cwd: '.tmp/public',
           src: ['**/*'],
           dest: 'www'
-        }
+        },
+          {
+            cwd: './bower_components',
+            src: ['**/*'],
+            dest: 'www/vendor/',
+            expand: true
+          }
         ]
       }
     },
 
     clean: {
-      dev: ['.tmp/public/**'],
+      dev: ['.tmp/public/**'
+            ],
       build: ['www']
     },
 
