@@ -26,7 +26,6 @@ before(function (done) {
 });
 
 after(function (done) {
-  console.log("all done");
   app.lower(done);
 });
 
@@ -34,21 +33,17 @@ describe('User', function(){
 	describe("#checkNameNotExist()", function(){
     it('Admin should exist', function(done){
       User.checkNameNotExist('Admin').then(function(){
-        assert(false);
-        done();
+        done("'Admin' exist");
       }, function(err){
-        assert(true);
         done();
       });
     })
 
     it('Neo should not exist', function(done){
       User.checkNameNotExist('Neo').then(function(){
-        assert(true);
         done();
       }, function(err){
-        assert(false, 'Neo exists');
-        done();
+        done("'Neo' exist");
       });
     })
   })

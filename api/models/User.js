@@ -59,7 +59,7 @@
           sails.log.error(error);
           reject({error: 500, message: "DB error"});
         } else if (usr){
-          sails.log.error(username + " exist");
+          sails.log.warn(username + " exist");
           reject({error: 500, message: "user exist"});
         } else {
           sails.log.info(username + " OK");
