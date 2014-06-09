@@ -10,7 +10,7 @@ dashboardApp.controller('NavCtrl', ['$scope', '$http', 'httpService', function($
 		})
 	}
 
-}])
+}]);
 // NavCtrl = function($scope, $http, httpService){
 // 	$scope.name="test";
 // 	$scope.logout = function() {

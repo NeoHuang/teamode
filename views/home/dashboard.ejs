@@ -1,1 +1,12 @@
-<h2>Dashboard todo</h2>
+<div class="container-lg" ng-controller="BoardListCtrl">
+	<div class="row">
+		<div class="col-md-3" ng-repeat="board in boards">
+			<div class="board">
+				<span>{{board.name}}</span>
+				<a ng-href="{{board.href}}" class="a-fill"></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="/js/boardListCtrl.js"></script>

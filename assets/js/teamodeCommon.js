@@ -17,6 +17,15 @@ var teamode = teamode || {
 			callback(data);
 		});
 	},
+	get: function($http, url, callback){
+		$http({
+			method: 'GET',
+			url: url,
+			headers: this.postJsonHeader 
+		}).success(function(data){
+			callback(data);
+		});
+	},
 
 	httpServices: function($http){
 		return {
@@ -31,6 +40,10 @@ var teamode = teamode || {
 
 			logout: function(fn){
 				teamode.post($http, '/logout', '', fn);
+			},
+
+			listBoards: function(fn){
+				teamode.get($http, '/board/list', fn);
 			}
 
 		}
