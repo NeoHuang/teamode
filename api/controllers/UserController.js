@@ -17,7 +17,8 @@
 
 
 var when = require('when') ;
-
+var crypto = require('crypto');
+var cookieService = require('../services/UserService');
 module.exports = {
 
 
@@ -64,18 +65,25 @@ module.exports = {
   login: function (req, res){
     var reqUser = {
       username:req.param("username"),
-      password: req.param("password")
+      password: req.param("password"),
+      remember: req.param("remember")
     }
     when(User.check(reqUser)).then(function(user){
       delete user.password;
       req.session.user = user;
       sails.log.info("session" + JSON.stringify(req.session.user));
-      res.json(user);
+      if (reqUser.remember == true){
+        cookieService.updateToken(user.username, res, function(){res.json(user)});
+      }
+      else 
+        res.json(user);
     }, function(error){
       res.json(error);
     })
 
  },
+
+ 
 
  getLogin: function(req, res){
     if (req.session.user){
@@ -89,7 +97,10 @@ module.exports = {
 
  logout: function (req, res){
     delete req.session.user;
+    res.clearCookie("tmdu");
+    res.clearCookie("tmdt");
     res.json({status: "OK"});
+
  }
 
 

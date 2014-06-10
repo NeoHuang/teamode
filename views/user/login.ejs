@@ -23,7 +23,10 @@
                             <input type="password" class= "form-control" placeholder="Password" ng-model="user.password">
                         </div>
                     </div>
-                    <hr class="colorgraph">
+
+                    <label style="margin-bottom:20px;">
+                      <input type="checkbox" ng-model="user.remember"> Remember me
+                    </label>
                     <button type="button" class="btn btn-primary btn-block" ng-click="login()">Login</button>
                     <div style="text-align:center"><span > Or</span></div>
                     <a class="btn btn-success btn-block" href="/signup" >Register</a>

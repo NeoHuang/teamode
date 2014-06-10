@@ -70,6 +70,20 @@
 
   },
 
+  checkNameExist : function(username){
+    return when.promise(function(resolve, reject, notify) {
+      User.findOneByUsername(username).done(function(err, usr){
+        if (err){
+          reject({error: 500, message: "DB error"});
+        } else if (usr){
+          resolve(usr);
+        } else {
+          reject({error: 500, message: "user not exist"});
+        }
+      });
+    });
+
+  },
   checkEmailNotExist : function(email){
     console.log("checkEmail");
     return when.promise(function(resolve, reject, notify) {
@@ -161,6 +175,7 @@
     else {
       when.reject({error: 500, message: "please input username and password"});
     }
-  }
+  },
+
 
 };

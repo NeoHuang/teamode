@@ -4,7 +4,8 @@ teamodeApp.factory("httpService", ["$http", teamode.httpServices]);
 LoginCtrl = function($scope, httpService){
 	$scope.user = {
 		username: "",
-		password: ""
+		password: "",
+		remember: "false"
 	}
 	$scope.login = function(){
 		console.log("login clicked");
