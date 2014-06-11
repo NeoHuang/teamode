@@ -54,6 +54,25 @@ module.exports = {
 			}
 		});
   });
+  },
+
+  deleteToken: function(userhash){
+    return when.promise(function(resolve,reject, notify){
+      Token.destroy({
+        userhash: userhash
+      }).done(function(err){
+        if (err){
+          reject(err);
+        }
+        else {
+          resolve();
+        }
+      })
+
+    })
+
+
   }
+
 
 };

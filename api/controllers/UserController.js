@@ -97,6 +97,9 @@ module.exports = {
 
  logout: function (req, res){
     delete req.session.user;
+    if (req.cookies.tmdu){
+      Token.deleteToken(req.cookies.tmdu);
+    }
     res.clearCookie("tmdu");
     res.clearCookie("tmdt");
     res.json({status: "OK"});
