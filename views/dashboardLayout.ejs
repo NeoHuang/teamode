@@ -20,11 +20,12 @@
       as you would normally: using <link/> tags.
       
     -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js'></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js'></script> 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js" ></script>
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src='/vendor/jquery.cookie/jquery.cookie.js'></script>
+    <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src='/vendor/bootstrap/dist/js/bootstrap.min.js'></script> 
+    <script src="/vendor/angular/angular.min.js" ></script>
+    <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js" ></script>
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/board.css">
     <link rel="stylesheet" href="/linker/styles/main.css">
@@ -62,7 +63,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right"  >
             <li>
-              <button class="navbar-btn btn btn-primary" style="margin-left: 10px">
+              <button class="navbar-btn btn btn-primary" style="margin-left: 10px" ng-click="addBoard()">
                 <span class="glyphicon glyphicon-plus" style="font-size:16px" ></span> 
               </button>
             </li>
