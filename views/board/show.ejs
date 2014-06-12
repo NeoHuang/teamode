@@ -7,8 +7,8 @@
 					<span>{{list.name}}</span>
 				</div>
 			</div>
-			<div class="list-container">
-				<form role="form" id="addListForm">
+			<div class="list-container" id="addListForm">
+				<form role="form" >
 					<div class="slide-down">
 						<div class="form-group">
 							<input name="name" class="form-control" ng-model="newListName" placeholder="New List Name">
@@ -19,8 +19,8 @@
 					</div>
 
 				</form>
-				<button id="addListBtn" style='width:100%' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
 			</div>
+			<button id="addListBtn" style='width:300px; opacity:0.6' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
 		</div>
 	</div>
 
