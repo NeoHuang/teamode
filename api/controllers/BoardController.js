@@ -91,6 +91,31 @@ add: function(req, res){
     res.json(errors.errLoginRequired);
  }
 })
+},
 
+getList: function(req, res){
+  if (req.param('boardId')){
+    Board.findOne(req.param('boardId')).done(function(err, board){
+      if (err){
+        res.json(errors.errDb);
+      }
+      else if (board){
+        List.findByBoardId(req.param('boardId')).done(function(err, lists){
+          if (err){
+            res.json(errors.errDb);
+          }
+          else {
+            res.json(lists);
+          }
+
+        })
+
+      }
+      else {
+        res.json({error: 500, message: "board not exist"});
+      }
+    })
+  }
 }
+
 };

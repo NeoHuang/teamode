@@ -70,6 +70,16 @@ module.exports.routes = {
   'get /b/:id': {
     controller: 'board',
     action: 'show'
+  },
+
+  'post /list/add': {
+    controller: 'list',
+    action: 'add'
+  },
+
+  'get /board/getList/:boardId': {
+    controller: 'board',
+    action: 'getList'
   }
 
   /*

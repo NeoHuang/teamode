@@ -12,6 +12,11 @@ dashboardApp.controller('BoardListCtrl', ['$scope', '$http', 'httpService', func
 
 dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', function($scope, $http, httpService){
 	$('#addListForm').hide();
+	httpService.getList($('#title').data('boardid'), function(lists){
+		if (!lists.error){
+			$scope.lists = lists;
+		}
+	})
 	$scope.addNewListClicked = function(){
 		$scope.newListName = "";
 		$('#addListBtn').hide();
@@ -50,6 +55,10 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			} 
 			console.log(newList);
 			httpService.addList(newList, function(data){
+				if (data && !data.error){
+					$scope.lists.push(data);
+					$scope.$apply();
+				}
 				closeAddList();
 
 			}, function(data, status){

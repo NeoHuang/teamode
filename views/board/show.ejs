@@ -1,6 +1,5 @@
-<div class="container-lg" ng-controller="BoardShowCtrl" >
-	<div >
-		<h2 id="title" data-boardId="<%= boardId %>" style="color:white"><%= boardName %></h2>
+<div style="margin-top:60px" ng-controller="BoardShowCtrl" >
+		<h2 id="title" data-boardId="<%= boardId %>" style="color:white; margin-left:10px"><%= boardName %></h2>
 		<div class="container-h-scroll">
 			<div class="list-container" ng-repeat="list in lists">
 				<div class="list">
@@ -20,9 +19,8 @@
 
 				</form>
 			</div>
-			<button id="addListBtn" style='width:300px; opacity:0.6' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
+			<button id="addListBtn" style='width:300px; opacity:0.6; margin:20px' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
 		</div>
 	</div>
 
-</div>
 <script type="text/javascript" src="/js/boardCtrl.js"></script>

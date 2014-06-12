@@ -44,7 +44,14 @@
       Board.findByOwnerId(this.id).done(function(err, bds){
         callback(err, bds);
       });
+    },
+
+    canAddList: function(boardId){
+      //Todo
+      return true;
     }
+
+
 
   	/* e.g.
   	nickname: 'string'

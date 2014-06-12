@@ -54,6 +54,10 @@ var teamode = teamode || {
 				teamode.post($http, '/board/add', angular.toJson(board), fn, errFn);
 			},
 
+			getList: function(boardId, fn, errFn){
+				teamode.get($http, '/board/getList/' + boardId, fn, errFn);
+			},
+
 			addList: function(list, fn, errFn){
 				teamode.post($http, '/list/add', angular.toJson(list), fn, errFn);
 			}
