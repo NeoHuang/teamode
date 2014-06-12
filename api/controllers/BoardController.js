@@ -14,7 +14,8 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-var errors = require('../services/errors');
+ var errors = require('../services/errors');
+ var UserService = require('../services/UserService');
  module.exports = {
 
 
@@ -27,37 +28,69 @@ var errors = require('../services/errors');
    _config: {},
 
    list: function(req, res){
-	if (req.session.user){
-		Board.listByUser(req.session.user.id).then(function(boards){
-			res.json(boards);
-		}, function(error){
-			res.json(error);
-		})
-	}
-	else {
-		res.json(errors.errLoginRequired);
+    UserService.getCurrentUser(req, function(user){
+      if (user){
+         Board.listByUser(user.id).then(function(boards){
+            res.json(boards);
+         }, function(error){
+            res.json(error);
+         })
 
-	}
+      }
 
-   },
+      else {
+       res.json(errors.errLoginRequired);
 
-   add: function(req, res){
-   	if (req.session.user){
-   		var newBoard = {
-   			name: req.param('name'),
-   			description: req.param('description'),
-   			ownerId: req.session.user.id
-   		}
+    }
 
-   		Board.add(newBoard).then(function(board){
-   			res.json(board);
-   		}, function(error){
-   			res.json(error);
-   		})
-   	}
-   	else {
-		res.json(errors.errLoginRequired);
-   	}
+ });
+ },
 
+ show: function(req, res){
+   UserService.getCurrentUser(req, function(user){
+    if (user){
+      var username = user.firstName + " " + user.lastName;
+      if (req.param('id')){
+         Board.findOne(req.param('id')).done(function(err, board){
+            if (!err){
+               res.view('board/show', {layout: "dashboardLayout", 
+                  username: username, 
+                  boardName: board.name,
+                  boardId: board.id});
+
+            }
+
+         })
+      }
    }
+   else {
+
+      res.json(errors.errLoginRequired);
+   }
+})
+
+
+},
+
+add: function(req, res){
+  UserService.getCurrentUser(req, function(user){
+     if (user){
+       var newBoard = {
+         name: req.param('name'),
+         description: req.param('description'),
+         ownerId: req.session.user.id
+      }
+
+      Board.add(newBoard).then(function(board){
+         res.json(board);
+      }, function(error){
+         res.json(error);
+      })
+   }
+   else {
+    res.json(errors.errLoginRequired);
+ }
+})
+
+}
 };

@@ -1,6 +1,6 @@
 <div class="container-lg" ng-controller="BoardListCtrl">
 	<div class="row">
-		<div class="col-md-3" ng-repeat="board in boards">
+		<div class="col-md-3" ng-repeat="board in boards" style="margin-top:20px">
 			<div class="board">
 				<span>{{board.name}}</span>
 				<a ng-href="{{board.href}}" class="a-fill"></a>
@@ -9,4 +9,4 @@
 	</div>
 
 </div>
-<script type="text/javascript" src="/js/boardListCtrl.js"></script>
+<script type="text/javascript" src="/js/boardCtrl.js"></script>

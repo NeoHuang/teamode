@@ -7,7 +7,7 @@ var teamode = teamode || {
 
 	postJsonHeader : {'Content-Type': 'application/json', 'ACCEPT': 'application/json'},
 
-	post: function($http, url, data, callback){
+	post: function($http, url, data, callback, errorCallback){
 		$http({
 			method: 'POST',
 			url: url,
@@ -15,6 +15,10 @@ var teamode = teamode || {
 			headers: this.postJsonHeader 
 		}).success(function(data){
 			callback(data);
+		}).error(function(data, status){
+			if (errorCallback){
+				errorCallback(data, status);
+			}
 		});
 	},
 	get: function($http, url, callback){
@@ -29,22 +33,31 @@ var teamode = teamode || {
 
 	httpServices: function($http){
 		return {
-			login: function(user, fn){
-				teamode.post($http, '/login', angular.toJson(user), fn);
+			login: function(user, fn, errFn){
+				teamode.post($http, '/login', angular.toJson(user), fn, errFn);
 			},
 
-			signup: function(user, fn){
-				teamode.post($http, '/signup', angular.toJson(user), fn);
+			signup: function(user, fn, errFn){
+				teamode.post($http, '/signup', angular.toJson(user), fn, errFn);
 
 			},
 
-			logout: function(fn){
-				teamode.post($http, '/logout', '', fn);
+			logout: function(fn, errFn){
+				teamode.post($http, '/logout', '', fn, errFn);
 			},
 
-			listBoards: function(fn){
-				teamode.get($http, '/board/list', fn);
+			listBoards: function(fn, errFn){
+				teamode.get($http, '/board/list', fn, errFn);
+			},
+
+			addBoard: function(board, fn, errFn){
+				teamode.post($http, '/board/add', angular.toJson(board), fn, errFn);
+			},
+
+			addList: function(list, fn, errFn){
+				teamode.post($http, '/list/add', angular.toJson(list), fn, errFn);
 			}
+
 
 		}
 	}

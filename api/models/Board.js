@@ -6,6 +6,7 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 var when = require('when');
+var errors = require('../services/errors');
 module.exports = {
 
   attributes: {
@@ -38,7 +39,8 @@ module.exports = {
   	return when.promise(function(resolve, reject, notify){
    		Board.findByOwnerId(id).done(function(err, boards){
    			if (err){
-   				reject({error: 500, message: 'DB Error'});
+          sails.log.error("db error" + JSON.stringify(err));
+   				reject(errors.errDb);
    			}
    			else {
    				resolve(boards);
@@ -54,7 +56,7 @@ module.exports = {
 	      Board.create(newBoard).done(function(error, board) { 
         if (error){
           sails.log.error(JSON.stringify(error));
-          reject({error: 500, message: "DB error"});
+          reject(errors.errDb);
         }
         else {
           sails.log.info("new board:" + board.newBoard + " created")

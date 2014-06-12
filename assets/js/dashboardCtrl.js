@@ -13,17 +13,26 @@ dashboardApp.controller('NavCtrl', ['$scope', '$http','$modal', 'httpService', f
 	$scope.addBoard = function(){
 		console.log('addBoard');
 		var modalInstance = $modal.open({
-			templateUrl: 'templates/addBoard.html',
-			controller: ModalInstanceCtrl,
-			resolve: {
-				items: function () {
-					return $scope.items;
-				}
-			}
+			templateUrl: '/templates/addBoard.html',
+			controller: AddBoardCtrl
+			// resolve: {
+			// 	items: function () {
+			// 		return $scope.items;
+			// 	}
+			// }
 		});
 
-		modalInstance.result.then(function (selectedItem) {
-			$scope.selected = selectedItem;
+		modalInstance.result.then(function (board) {
+			if (board.name ){
+				if (!board.description){
+					board.description = "";
+				}
+				httpService.addBoard(board, function(data){
+					if (!data.err){
+						window.location = '/b/' + data.id;
+					}
+				})
+			}
 		}, function () {
 			// $log.info('Modal dismissed at: ' + new Date());
 		});
@@ -31,17 +40,21 @@ dashboardApp.controller('NavCtrl', ['$scope', '$http','$modal', 'httpService', f
 
 }]);
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+var AddBoardCtrl = function ($scope, $modalInstance) {
+	$scope.board = {};
 
 
   $scope.ok = function () {
-    $modalInstance.close();
+    $modalInstance.close($scope.board);
   };
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
 };
+
+
+
 // NavCtrl = function($scope, $http, httpService){
 // 	$scope.name="test";
 // 	$scope.logout = function() {

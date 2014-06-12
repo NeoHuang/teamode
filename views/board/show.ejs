@@ -1,0 +1,28 @@
+<div class="container-lg" ng-controller="BoardShowCtrl" >
+	<div >
+		<h2 id="title" data-boardId="<%= boardId %>" style="color:white"><%= boardName %></h2>
+		<div class="container-h-scroll">
+			<div class="list-container" ng-repeat="list in lists">
+				<div class="list">
+					<span>{{list.name}}</span>
+				</div>
+			</div>
+			<div class="list-container">
+				<form role="form" id="addListForm">
+					<div class="slide-down">
+						<div class="form-group">
+							<input name="name" class="form-control" ng-model="newListName" placeholder="New List Name">
+						</div>
+						<div class="form-group" ng-click="hide">
+							<button type="button" class="btn btn-primary" ng-click="saveList()">Save</button>
+						</div>
+					</div>
+
+				</form>
+				<button id="addListBtn" style='width:100%' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="/js/boardCtrl.js"></script>

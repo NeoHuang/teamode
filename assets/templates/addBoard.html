@@ -1,15 +1,16 @@
  <div class="modal-header">
-            <h3 class="modal-title">Im a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+    <h3 class="modal-title">Add a new Board</h3>
+</div>
+<div class="modal-body">
+ <form role="form" >
+    <div class="form-group" >
+        <input type="text" name="name" id="name" class="form-control " placeholder="Board Name" tabindex="1" ng-model="board.name" required>
+    </div>
+        <textarea  name="description" id="description" class="form-control " placeholder="Description" tabindex="2" ng-model="board.description" rows="4" required>
+        </textarea>
+</form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

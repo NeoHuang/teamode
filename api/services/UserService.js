@@ -55,7 +55,6 @@ module.exports = {
 			if (req.cookies.tmdu &&
 				req.cookies.tmdt){
 				Token.validateToken(req.cookies.tmdu, req.cookies.tmdt).done(function(user){
-					req.session.user = user;
 					callback(user);
 				}, function(err){
 					callback(null);
