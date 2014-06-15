@@ -12,19 +12,28 @@ dashboardApp.controller('BoardListCtrl', ['$scope', '$http', 'httpService', func
 
 dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', function($scope, $http, httpService){
 	$('#addListForm').hide();
+	var listContainer = $('.list-container');
+	$scope.listWidth = listContainer.width() + parseInt(listContainer.css("marginTop")) * 2;
+	var resizeContainer = function() {
+			var newWidth = $scope.listWidth * ($scope.lists.length + 2)
+			console.log($scope.listWidth);
+			$(".container-h-scroll").width(newWidth);
+
+	}
 	httpService.getList($('#title').data('boardid'), function(lists){
 		if (!lists.error){
 			$scope.lists = lists;
+			resizeContainer();
 		}
 	})
 	$scope.addNewListClicked = function(){
 		$scope.newListName = "";
 		$('#addListBtn').hide();
-		$('#addListForm').slideDown(200);
+		$('#addListForm').fadeIn(200);
 	};
 
 	var closeAddList = function() {
-		$('#addListForm').slideUp({
+		$('#addListForm').fadeOut({
 			duration: 200,
 			done: function(){
 				$('#addListBtn').show();
@@ -55,11 +64,12 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			} 
 			console.log(newList);
 			httpService.addList(newList, function(data){
+				$('#addListForm').hide();
+				$('#addListBtn').show();
 				if (data && !data.error){
 					$scope.lists.push(data);
-					$scope.$apply();
+					resizeContainer();
 				}
-				closeAddList();
 
 			}, function(data, status){
 				closeAddList();

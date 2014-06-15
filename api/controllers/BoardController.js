@@ -78,7 +78,7 @@ add: function(req, res){
        var newBoard = {
          name: req.param('name'),
          description: req.param('description'),
-         ownerId: req.session.user.id
+         ownerId: user.id
       }
 
       Board.add(newBoard).then(function(board){

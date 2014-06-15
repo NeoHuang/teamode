@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Sniglet");
 .board {
 	// background-color: #083E5C;
 	background-color: #075E8F;
@@ -24,7 +25,11 @@
 	background-color: #E9E9E9;
 	padding: 5px;
 	margin: 10px;
-	display: inline-block;
+	display: block;
+	float:left;
+    white-space: nowrap;
+    box-shadow: 1px 1px 5px gray;
+	min-height: 100px;
 
 }
 
@@ -37,3 +42,30 @@
 	transition: all 0.4s ease;
 }
 
+.list-title {
+	font-size: 16px;
+	font-family: Sniglet;
+	font-weight: bold;
+
+}
+
+.btn-add {
+	width: 100%;
+	opacity: 0.6;
+}
+
+  .tilt {
+    transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -webkit-transform: rotate(3deg);
+  }
+
+ .portlet-placeholder {
+ 	background-color: blue;
+ 	width: 300px;
+ 	margin: 10px;
+ 	height: 300px;
+ 	opacity:0.3;
+	display: block;
+	float: left;
+ }

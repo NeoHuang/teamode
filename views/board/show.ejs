@@ -1,8 +1,9 @@
 <div style="margin-top:60px" ng-controller="BoardShowCtrl" >
-		<h2 id="title" data-boardId="<%= boardId %>" style="color:white; margin-left:10px"><%= boardName %></h2>
-		<div class="container-h-scroll">
+	<h2 id="title" data-boardId="<%= boardId %>" style="color:white; margin-left:10px"><%= boardName %></h2>
+	<div class="container-h-scroll">
+		<div id="sortable">
 			<div class="list-container" ng-repeat="list in lists">
-				<div class="list">
+				<div class="list-title">
 					<span>{{list.name}}</span>
 				</div>
 			</div>
@@ -19,8 +20,27 @@
 
 				</form>
 			</div>
-			<button id="addListBtn" style='width:300px; opacity:0.6; margin:20px' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button>
+		</div>
+		<div class="list-container" id="addListBtn" style="background-color: transparent; box-shadow:none;padding: 0px">
+			<!-- <button id="addListBtn" style='width:300px; opacity:0.6; margin:20px' type="button" class="btn btn-primary" ng-click="addNewListClicked()">Add a new list </button> -->
+			<span ng-click="addNewListClicked()"  class="btn btn-primary btn-add" > Add a new List</span>
 		</div>
 	</div>
+</div>
 
 <script type="text/javascript" src="/js/boardCtrl.js"></script>
+<script>
+$(function() {
+	$( "#sortable" ).sortable({
+		start: function (event, ui) {
+			ui.item.addClass('tilt');
+		},
+		stop: function (event, ui) {
+			ui.item.removeClass('tilt');
+		},
+		placeholder: "portlet-placeholder ui-corner-all"
+
+	});
+	$( "#sortable" ).disableSelection();
+});
+</script>
