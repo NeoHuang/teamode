@@ -1,4 +1,4 @@
-var dashboardApp = angular.module('dashboardApp',['ui.bootstrap']);
+var dashboardApp = angular.module('dashboardApp',['ui.bootstrap', 'ui.sortable']);
 dashboardApp.factory('httpService', teamode.httpServices);
 
 

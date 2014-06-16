@@ -27,6 +27,7 @@
     <script src="/vendor/angular/angular.min.js" ></script>
     <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js" ></script>
     <script src="/vendor/jquery-ui/ui/minified/jquery-ui.min.js" ></script>
+    <script src="/vendor/angular-ui-sortable/sortable.min.js" ></script>
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/board.css">
     <link rel="stylesheet" href="/linker/styles/main.css">
@@ -68,8 +69,8 @@
                 <span class="glyphicon glyphicon-plus" style="font-size:16px" ></span> 
               </button>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%- username %><b class="caret"></b></a>
+            <li >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= username %><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Profile</a></li>
                 <li><a style="cursor:pointer" ng-click="logout()">Logout</a></li>

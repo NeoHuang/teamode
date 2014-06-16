@@ -14,6 +14,25 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 	$('#addListForm').hide();
 	var listContainer = $('.list-container');
 	$scope.listWidth = listContainer.width() + parseInt(listContainer.css("marginTop")) * 2;
+	$scope.sortableOptions = {
+		start: function (event, ui) {
+			ui.item.addClass('tilt');
+			ui.placeholder.height(ui.item.height());
+			$(event.target).data("ui-sortable").floating = true;
+		},
+		stop: function (event, ui) {
+			ui.item.removeClass('tilt');
+			var data = $scope.lists.map(function(i){
+		        return i.id;
+		      }).join(', ');
+			console.log(data);
+		},
+		update: function(event, ui){
+		},
+		placeholder: "portlet-placeholder ui-corner-all"
+
+	};
+	$( "#sortable" ).disableSelection();
 	var resizeContainer = function() {
 			var newWidth = $scope.listWidth * ($scope.lists.length + 2)
 			console.log($scope.listWidth);
