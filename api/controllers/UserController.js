@@ -68,7 +68,7 @@ module.exports = {
       password: req.param("password"),
       remember: req.param("remember")
     }
-    when(User.check(reqUser)).then(function(user){
+    User.check(reqUser).done(function(user){
       delete user.password;
       req.session.user = user;
       sails.log.info("session" + JSON.stringify(req.session.user));

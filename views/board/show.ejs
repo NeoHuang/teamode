@@ -34,6 +34,7 @@ $(function() {
 	$( "#sortable" ).sortable({
 		start: function (event, ui) {
 			ui.item.addClass('tilt');
+			ui.placeholder.height(ui.item.height());
 		},
 		stop: function (event, ui) {
 			ui.item.removeClass('tilt');

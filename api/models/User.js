@@ -180,7 +180,7 @@
       })
     }
     else {
-      when.reject({error: 500, message: "please input username and password"});
+      return when.reject({error: 500, message: "please input username and password"});
     }
   },
 
