@@ -29,10 +29,23 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		},
 		update: function(event, ui){
 		},
-		placeholder: "portlet-placeholder ui-corner-all"
+		placeholder: "list-placeholder ui-corner-all"
 
 	};
-	$( "#sortable" ).disableSelection();
+
+	$scope.cardSortableOpt = {
+		connectWith: ".card-list",
+		dropOnEmpty: true,
+		start: function (event, ui) {
+			ui.item.addClass('tilt');
+			ui.placeholder.height(ui.item.height());
+			$(event.target).data("ui-sortable").floating = true;
+		},
+		stop: function (event, ui){
+			ui.item.removeClass('tilt');
+		},
+		placeholder: "card-placeholder ui-corner-all"
+	}
 	var resizeContainer = function() {
 			var newWidth = $scope.listWidth * ($scope.lists.length + 2)
 			console.log($scope.listWidth);
@@ -41,6 +54,28 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 	}
 	httpService.getList($('#title').data('boardid'), function(lists){
 		if (!lists.error){
+			if (lists.length > 1){
+				lists[0].issues = [{
+					name:"this is issue A, It's a big issue that should be solve immediately"
+				},
+				{
+					name: "this is issue B"
+				},
+				{
+					name: "this is issue C"
+				}
+				];
+				lists[1].issues = [{
+					name:"this is issue A1"
+				},
+				{
+					name: "this is issue B1"
+				},
+				{
+					name: "this is issue C1"
+				}
+				]
+			}
 			$scope.lists = lists;
 			resizeContainer();
 		}

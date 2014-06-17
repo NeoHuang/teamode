@@ -1,4 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Sniglet");
+@dark-gray: #5F5F5F;
 .board {
 	// background-color: #083E5C;
 	background-color: #075E8F;
@@ -32,7 +33,7 @@
 }
 
 .dark-grey {
-	color: #5F5F5F;
+	color: @dark-gray;
 
 }
 
@@ -52,18 +53,63 @@
 	opacity: 0.6;
 }
 
-  .tilt {
-    transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -webkit-transform: rotate(3deg);
-  }
+.tilt {
+	transform: rotate(3deg);
+	-moz-transform: rotate(3deg);
+	-webkit-transform: rotate(3deg);
+}
 
- .portlet-placeholder {
- 	background-color: blue;
- 	width: 300px;
- 	margin: 10px;
- 	height: 300px;
- 	opacity:0.3;
+.list-placeholder{
+	background-color: #428BCA;
+	width: 300px;
+	margin: 10px;
+	opacity:0.5;
 	display: block;
 	float: left;
- }
+}
+
+.card-placeholder {
+	background-color: #428BCA;
+	opacity:0.5;
+	margin: 5px; 
+}
+
+.card {
+	background-color: white;
+	margin: 5px;
+	font-weight: normal;
+	font-size: 14px;
+	padding: 5px;
+	font-family: Arial;
+	box-shadow: 1px 1px 2px gray;
+}
+
+.card-danger {
+	border-left: 3px solid red;
+}
+
+.card:hover {
+	box-shadow: 1px 1px 5px gray;
+}
+
+.card-list {
+	min-height: 50px;
+	width: 100%;
+}
+
+
+.card-title {
+	text-decoration: none;
+	display: block;
+	word-wrap: break-word;
+	white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */  
+   color: @dark-gray;
+}
+
+.card-title:hover {
+   color: @dark-gray;
+	text-decoration: none;
+}

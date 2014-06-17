@@ -5,6 +5,11 @@
 			<div id="id_{{list.id}}" class="list-container" ng-repeat="list in lists">
 				<div class="list-title">
 					<span>{{list.name}}</span>
+					<div class="card-list" ui-sortable="cardSortableOpt">
+						<div ng-repeat="issue in list.issues" class="card" >
+							<a class="a-fill card-title" href="#">{{issue.name}}<br class="clear"></a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
