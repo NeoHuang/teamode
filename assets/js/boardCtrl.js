@@ -56,23 +56,29 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		if (!lists.error){
 			if (lists.length > 1){
 				lists[0].issues = [{
-					name:"this is issue A, It's a big issue that should be solve immediately"
+					name:"this is issue A, It's a big issue that should be solve immediately",
+					class: "card-danger" 
 				},
 				{
-					name: "this is issue B"
+					name: "this is issue B",
+					class: "card-danger" 
 				},
 				{
-					name: "this is issue C"
+					name: "this is issue C",
+					class: "card-danger" 
 				}
 				];
 				lists[1].issues = [{
-					name:"this is issue A1"
+					name:"this is issue A1",
+					class: "card-warn" 
 				},
 				{
-					name: "this is issue B1"
+					name: "this is issue B1",
+					class: "card-normal"
 				},
 				{
-					name: "this is issue C1"
+					name: "this is issue C1",
+					class: "card-low"
 				}
 				]
 			}

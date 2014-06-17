@@ -6,7 +6,7 @@
 				<div class="list-title">
 					<span>{{list.name}}</span>
 					<div class="card-list" ui-sortable="cardSortableOpt">
-						<div ng-repeat="issue in list.issues" class="card" >
+						<div ng-repeat="issue in list.issues" class="card" ng-class="issue.class">
 							<a class="a-fill card-title" href="#">{{issue.name}}<br class="clear"></a>
 						</div>
 					</div>
