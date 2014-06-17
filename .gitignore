@@ -31,3 +31,5 @@ node_modules
 .lock-wscript
 
 .tmp
+
+config/local.js
