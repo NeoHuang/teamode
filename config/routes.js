@@ -80,7 +80,13 @@ module.exports.routes = {
   'get /board/getList/:boardId': {
     controller: 'board',
     action: 'getList'
+  },
+
+  'post /issue/add': {
+    controller: 'issue',
+    action: 'add'
   }
+
 
   /*
   // But what if you want your home page to display

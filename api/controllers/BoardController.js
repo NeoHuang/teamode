@@ -14,6 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
+ var when = require('when');
  var errors = require('../services/errors');
  var UserService = require('../services/UserService');
  module.exports = {
@@ -79,18 +80,18 @@ add: function(req, res){
          name: req.param('name'),
          description: req.param('description'),
          ownerId: user.id
-      }
+        }
 
-      Board.add(newBoard).then(function(board){
-         res.json(board);
-      }, function(error){
-         res.json(error);
-      })
+        Board.add(newBoard).then(function(board){
+           res.json(board);
+        }, function(error){
+           res.json(error);
+        })
+     }
+     else {
+      res.json(errors.errLoginRequired);
    }
-   else {
-    res.json(errors.errLoginRequired);
- }
-})
+  })
 },
 
 getList: function(req, res){
@@ -105,7 +106,29 @@ getList: function(req, res){
             res.json(errors.errDb);
           }
           else {
-            res.json(lists);
+            var promises = [];
+            for (var i = 0; i < lists.length; i++){
+              promises.push(when.promise(function(resolve, reject, notify){
+                Issue.findByListId(lists[i].id).done(function(err, issues){
+                  if (err){
+                    reject();
+
+                  }
+                  else {
+                    lists[i].issues = issues;
+                    resolve();
+                  }
+                })
+
+              }));
+
+            }
+            when.all(promises).done(function(){
+              res.json(lists);
+            }, function() {
+              res.json(erros.errDb);
+            })
+
           }
 
         })
