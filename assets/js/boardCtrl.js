@@ -84,13 +84,18 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 	$scope.addNewListClicked = function(){
 		$scope.newListName = "";
 		$('#addListBtn').hide();
-		$('#addListForm').fadeIn(200);
+		$('#addListForm').fadeIn(200, function(){
+			$('#txtNewName').focus();
+		});
 	};
 
 	$scope.addNewIssueClicked = function(id){
 		$scope.newIssueSummary = "";
 		var pSelector = "#id_" + id ;
-		$(pSelector + ' .card-composer').slideDown(300);
+		$(pSelector + ' .card-composer').slideDown(300, function(){
+			$(pSelector + ' .card-composer-text').focus();
+
+		});
 		$(pSelector + ' .list-footer').hide();
 	};
 
