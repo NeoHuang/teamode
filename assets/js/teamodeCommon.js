@@ -60,7 +60,12 @@ var teamode = teamode || {
 
 			addList: function(list, fn, errFn){
 				teamode.post($http, '/list/add', angular.toJson(list), fn, errFn);
+			},
+
+			addIssue: function(issue, fn, errFn){
+				teamode.post($http, '/issue/add', angular.toJson(issue), fn, errFn);
 			}
+
 
 
 		}

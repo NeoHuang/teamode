@@ -2,7 +2,7 @@
 @import "color";
 .board {
 	// background-color: #083E5C;
-	background-color: @background-blue;
+	background-color: darken(@background-blue, 10%);
 	color: darken(white, 5%);
 	height: 100px;
 	padding-left: 10px;
@@ -28,7 +28,8 @@
 	float:left;
     white-space: nowrap;
     box-shadow: 1px 1px 5px gray;
-	min-height: 100px;
+	// min-height: 100px;
+  position: relative;
 
 }
 
@@ -45,6 +46,7 @@
 	font-size: 16px;
 	font-family: Sniglet;
 	font-weight: bold;
+  cursor: move;
 
 }
 
@@ -84,6 +86,8 @@
 	padding: 5px;
 	font-family: Arial;
 	box-shadow: 1px 1px 2px gray;
+  display: block;
+  position: relative;
 }
 
 .card-danger {
@@ -106,8 +110,8 @@
 }
 
 .card-list {
-	min-height: 50px;
 	width: 100%;
+  min-height: 30px;
 }
 
 
@@ -125,5 +129,31 @@
 .card-title:hover {
    color: @dark-gray;
 	text-decoration: none;
+}
+
+.card-composer {
+  margin: 5px;
+}
+
+.card-composer-text {
+  width: 100%;
+  resize: vertical;
+  box-shadow: 1px 1px 2px gray;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.list-footer {
+  // position: absolute;
+  margin: 5px;
+  text-decoration: none;
+  color: @dark-gray;
+  bottom: 5px;
+}
+
+.list-footer:hover {
+  color: @dark-gray;
+
+
 }
 

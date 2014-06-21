@@ -11,7 +11,8 @@ dashboardApp.controller('BoardListCtrl', ['$scope', '$http', 'httpService', func
 }]);
 
 dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', function($scope, $http, httpService){
-	$('#addListForm').hide();
+	//$('#addListForm').hide();
+	$scope.newIssueSummary = "";
 	var listContainer = $('.list-container');
 	$scope.listWidth = listContainer.width() + parseInt(listContainer.css("marginTop")) * 2;
 	$scope.sortableOptions = {
@@ -25,11 +26,11 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			var data = $scope.lists.map(function(i){
 		        return i.id;
 		      }).join(', ');
-			console.log(data);
 		},
 		update: function(event, ui){
 		},
-		placeholder: "list-placeholder ui-corner-all"
+		placeholder: "list-placeholder ui-corner-all",
+		handle: '.list-title'
 
 	};
 
@@ -44,7 +45,8 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		stop: function (event, ui){
 			ui.item.removeClass('tilt');
 		},
-		placeholder: "card-placeholder ui-corner-all"
+		placeholder: "card-placeholder ui-corner-all",
+
 	}
 	var resizeContainer = function() {
 			var newWidth = $scope.listWidth * ($scope.lists.length + 2)
@@ -52,36 +54,29 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			$(".container-h-scroll").width(newWidth);
 
 	}
+	var generateIssueClass = function(severity){
+					if (severity < 2){
+						return "card-danger";
+
+					}else if (severity < 5){
+						return "card-normal";
+					}
+					else if (severity < 7){
+						return "card-warn";
+					}
+					else {
+						return "card-danger";
+					}
+
+	}
 	httpService.getList($('#title').data('boardid'), function(lists){
 		if (!lists.error){
-			// if (lists.length > 1){
-			// 	lists[0].issues = [{
-			// 		name:"this is issue A, It's a big issue that should be solve immediately",
-			// 		class: "card-danger" 
-			// 	},
-			// 	{
-			// 		name: "this is issue B",
-			// 		class: "card-danger" 
-			// 	},
-			// 	{
-			// 		name: "this is issue C",
-			// 		class: "card-danger" 
-			// 	}
-			// 	];
-			// 	lists[1].issues = [{
-			// 		name:"this is issue A1",
-			// 		class: "card-warn" 
-			// 	},
-			// 	{
-			// 		name: "this is issue B1",
-			// 		class: "card-normal"
-			// 	},
-			// 	{
-			// 		name: "this is issue C1",
-			// 		class: "card-low"
-			// 	}
-			// 	]
-			// }
+			lists.forEach(function(e, index){
+				e.issues.forEach(function(issue, issueIndex){
+					lists[index].issues[issueIndex].class = generateIssueClass(issue.severity);
+
+				})
+			})
 			$scope.lists = lists;
 			resizeContainer();
 		}
@@ -91,6 +86,20 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		$('#addListBtn').hide();
 		$('#addListForm').fadeIn(200);
 	};
+
+	$scope.addNewIssueClicked = function(id){
+		$scope.newIssueSummary = "";
+		var pSelector = "#id_" + id ;
+		$(pSelector + ' .card-composer').slideDown(300);
+		$(pSelector + ' .list-footer').hide();
+	};
+
+	$scope.closeNewIssue = function(id){
+		var pSelector = "#id_" + id ;
+		$(pSelector + ' .card-composer').hide();
+		$(pSelector + ' .list-footer').show();
+	};
+
 
 	var closeAddList = function() {
 		$('#addListForm').fadeOut({
@@ -103,17 +112,17 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 
 	}
 
-	$(document).mouseup( function(e){
-		var listForm = $('#addListForm');
-		var addListBtn = $('#addListBtn');
-		if (!listForm.is(e.target) && 
-			listForm.has(e.target).length == 0 &&
-			!addListBtn.is(e.target)){
-			closeAddList();
+	// $(document).mouseup( function(e){
+	// 	var listForm = $('#addListForm');
+	// 	var addListBtn = $('#addListBtn');
+	// 	if (!listForm.is(e.target) && 
+	// 		listForm.has(e.target).length == 0 &&
+	// 		!addListBtn.is(e.target)){
+	// 		closeAddList();
 
-		}
+	// 	}
 
-	});
+	// });
 
 
 	$scope.saveList = function(){
@@ -122,7 +131,6 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 				name: $scope.newListName,
 				boardId: $('#title').data('boardid')
 			} 
-			console.log(newList);
 			httpService.addList(newList, function(data){
 				$('#addListForm').hide();
 				$('#addListBtn').show();
@@ -134,6 +142,31 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			}, function(data, status){
 				closeAddList();
 			});
+
+		}
+	}
+
+	$scope.addIssue = function(index){
+		console.log($scope.newIssueSummary);
+			var newIssue = {
+				summary:$scope.newIssueSummary,
+				listId: $scope.lists[index].id,
+				description: "",
+				severity: 9,
+				point: 0,
+			}
+		if (newIssue.summary && newIssue.summary !=""){
+			$scope.newIssueSummary = "";
+			httpService.addIssue(newIssue, function(data){
+				if (data && !data.error){
+					newIssue.class = generateIssueClass(newIssue.severity);
+					$scope.lists[index].issues.push(newIssue);
+					// $scope.closeNewIssue($scope.lists[index].id);
+				}
+				else {
+					console.log(data);
+				}
+			})
 
 		}
 	}

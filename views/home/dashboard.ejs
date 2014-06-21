@@ -1,7 +1,7 @@
 <div class="container-lg" ng-controller="BoardListCtrl">
 	<div class="row">
 		<div class="col-md-3" ng-repeat="board in boards" style="margin-top:20px">
-			<div class="board">
+			<div class="board relative">
 				<span>{{board.name}}</span>
 				<a ng-href="{{board.href}}" class="a-fill"></a>
 			</div>

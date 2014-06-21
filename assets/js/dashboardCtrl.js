@@ -1,6 +1,36 @@
 var dashboardApp = angular.module('dashboardApp',['ui.bootstrap', 'ui.sortable']);
 dashboardApp.factory('httpService', teamode.httpServices);
+dashboardApp.directive('clickaway',['$document', function($document){
 
+return {
+  restrict: 'A',
+  require: '?ngModel',
+  link: function(scope, element, attr){
+      scope.toggleSelect = function(){
+        scope.isPopupVisible = !scope.isPopupVisible;
+      }
+      var index = 1;
+      scope.$watch(attr.clickaway, function(value) {
+        index = value || 1;
+      });
+      $document.bind('click', function(event){
+        var isClickedElementChildOfPopup = element
+          .find(event.target)
+          .length > 0;
+          
+        if (isClickedElementChildOfPopup)
+          return;
+        element.children().hide();
+
+        var showElement = $(element).children().eq(index);
+        if (showElement){
+        	showElement.show();
+        }
+
+      });
+  }
+};
+}]);
 
 dashboardApp.controller('NavCtrl', ['$scope', '$http','$modal', 'httpService', function($scope, $http, $modal, httpService){
 	$scope.logout = function() {

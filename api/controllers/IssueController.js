@@ -34,7 +34,8 @@ module.exports = {
 				description: req.param('description'),
 				creatorId: user.id,
 				listId: req.param('listId'),
-				point: req.param('point') || 0
+				point: req.param('point') || 0,
+				severity: req.param('severity') || 0
 
       }
 			Issue.add(newIssue).then(function(issue){

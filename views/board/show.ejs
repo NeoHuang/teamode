@@ -5,21 +5,32 @@
 			<div id="id_{{list.id}}" class="list-container" ng-repeat="list in lists">
 				<div class="list-title">
 					<span>{{list.name}}</span>
-					<div class="card-list" ui-sortable="cardSortableOpt">
-						<div ng-repeat="issue in list.issues" class="card" ng-class="issue.class">
-							<a class="a-fill card-title" href="#">{{issue.summary}}<br class="clear"></a>
-						</div>
+				</div>
+				<div class="card-list" ui-sortable="cardSortableOpt" ng-model="list.issues">
+					<div ng-repeat="issue in list.issues" class="card" ng-class="issue.class">
+						<a class="card-title" href="#">{{issue.summary}}<br class="clear"></a>
 					</div>
+
+				</div>
+				<div clickaway>
+					<div class="card-composer soft-hide">
+						<textarea class="card-composer-text" ng-model="$parent.newIssueSummary"></textarea>
+
+						<button type="button" class="btn btn-primary" ng-click="addIssue($index)">Add</button>
+						<span class="btn glyphicon glyphicon-remove" ng-click="closeNewIssue(list.id)"></span>
+					</div>
+						<a class="list-footer" ng-click="addNewIssueClicked(list.id)" href="#">Add an issue</a>
 				</div>
 			</div>
 		</div>
-			<div class="list-container" id="addListForm">
+		<div clickaway>
+			<div class="list-container soft-hide" id="addListForm">
 				<form role="form" >
 					<div class="slide-down">
 						<div class="form-group">
 							<input name="name" class="form-control" ng-model="newListName" placeholder="New List Name">
 						</div>
-						<div class="form-group" ng-click="hide">
+						<div class="form-group" >
 							<button type="button" class="btn btn-primary" ng-click="saveList()">Save</button>
 						</div>
 					</div>
@@ -29,6 +40,7 @@
 		<div class="list-container" id="addListBtn" style="background-color: transparent; box-shadow:none;padding: 0px">
 			<span ng-click="addNewListClicked()"  class="btn btn-primary btn-add" > Add a new List</span>
 		</div>
+	</div>
 	</div>
 </div>
 
