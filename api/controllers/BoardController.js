@@ -65,8 +65,8 @@
       }
    }
    else {
+    res.redirect('/login');
 
-      res.json(errors.errLoginRequired);
    }
 })
 
