@@ -21,7 +21,13 @@ module.exports = function(req, res, next) {
       	return next();
       }
       else {
-      	return res.forbidden('You are not permitted to perform this action.');
+      	if(/application\/json/.test(req.get('accept'))){
+      		return res.json(errors.errLoginRequired);
+      	}
+      	else {
+      		return res.redirect('/login');
+
+      	}
       }
     });
   // if (req.session.authenticated) {
