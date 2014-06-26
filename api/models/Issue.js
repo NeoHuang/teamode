@@ -5,8 +5,10 @@
  * @description :: A short summary of how this model works and what it represents.
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
-
-var when = require('when')
+/*jslint node: true */
+/*global List, Issue*/
+'use strict';
+var when = require('when');
 var errors = require('../services/errors');
 module.exports = {
 
@@ -48,9 +50,9 @@ module.exports = {
   },
 
   add: function(newIssue){
-  	return when.promise(function(resolve, reject, notify){
+  	return when.promise(function(resolve, reject){
 	  	if (newIssue.summary && 
-	  		newIssue.summary != "" &&
+	  		newIssue.summary !== '' &&
 	  		newIssue.listId &&
 	  		newIssue.creatorId){
 
@@ -69,7 +71,7 @@ module.exports = {
 	  					else {
 	  						resolve(issue);
 	  					}
-	  				})
+	  				});
 	  			}
 	  		});
 	  	}
@@ -78,7 +80,7 @@ module.exports = {
 
 	  	}
 
-  	})
+  	});
 
 
   }
