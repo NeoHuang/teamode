@@ -27,8 +27,7 @@ module.exports = {
   _config: {},
 
   add: function(req, res){
-  UserService.getCurrentUser(req, function(user){
-    if (user){
+  	var user = req.user;
 	    var newIssue = {
 				summary: req.param('summary'),
 				description: req.param('description'),
@@ -43,11 +42,6 @@ module.exports = {
 			}, function(error){
 				res.json(error);
 			});
-    }
-		else {
-			res.json(errors.errLoginRequired);
-		}
-  })
 },
 
   

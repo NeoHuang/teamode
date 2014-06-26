@@ -30,31 +30,20 @@
    _config: {},
 
    list: function(req, res){
-    UserService.getCurrentUser(req, function(user){
-      if (user){
+      var user = req.user;
          Board.listByUser(user.id).then(function(boards){
             res.json(boards);
          }, function(error){
             res.json(error);
          });
-
-      }
-
-      else {
-       res.json(errors.errLoginRequired);
-
-    }
-
- });
- },
+   },
 
  show: function(req, res){
-   UserService.getCurrentUser(req, function(user){
-    if (user){
-      var username = user.firstName + ' ' + user.lastName;
+      var user = req.user;
       if (req.param('id')){
          Board.findOne(req.param('id')).done(function(err, board){
             if (!err){
+              var username = user.firstName + ' ' + user.lastName;
                res.view('board/show', {layout: 'dashboardLayout', 
                   username: username, 
                   boardName: board.name,
@@ -64,19 +53,11 @@
 
          });
       }
-   }
-   else {
-    res.redirect('/login');
-
-   }
-});
-
 
 },
 
 add: function(req, res){
-  UserService.getCurrentUser(req, function(user){
-     if (user){
+    var user = req.user;
        var newBoard = {
          name: req.param('name'),
          description: req.param('description'),
@@ -88,11 +69,6 @@ add: function(req, res){
         }, function(error){
            res.json(error);
         });
-     }
-     else {
-      res.json(errors.errLoginRequired);
-   }
-  });
 },
 
 getList: function(req, res){

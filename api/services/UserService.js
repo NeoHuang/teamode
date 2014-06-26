@@ -7,7 +7,6 @@ var setTokenCookie = function(res, userCookie, token){
 }
 
 module.exports = {
-
 	updateToken: function(username, res, next){
 		var userCookie = crypto.createHash('sha1').update(username).digest("hex");
 		require('crypto').randomBytes(48, function(ex, buf) {
@@ -46,8 +45,10 @@ module.exports = {
 
 	},
 
-	getCurrentUser: function(req, callback) {
+	getCurrentUser: function(req, res, callback) {
+		var self = this;
 		if (req.session.user){
+			req.session.user.isCookie = false;
 			if (callback)
 				callback(req.session.user);
 		}
@@ -55,7 +56,10 @@ module.exports = {
 			if (req.cookies.tmdu &&
 				req.cookies.tmdt){
 				Token.validateToken(req.cookies.tmdu, req.cookies.tmdt).done(function(user){
-					callback(user);
+					user.isCookie = true;
+					self.updateToken(user.username, res, function(){
+						callback(user);
+					});
 				}, function(err){
 					callback(null);
 				});
