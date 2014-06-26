@@ -5,7 +5,6 @@
  * @description :: A short summary of how this model works and what it represents.
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
-/*jslint node: true */
 /*global List, Issue*/
 'use strict';
 var when = require('when');

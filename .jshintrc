@@ -1,0 +1,5 @@
+{
+	"node":true,
+	"undef":true,
+	"predef": ["Board", "Issue", "Token", "User", "List", "sails"]
+}
