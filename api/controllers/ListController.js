@@ -30,39 +30,20 @@ var when = require('when');
    _config: {},
 
    add: function(req, res){
-    var user = req.user;
     var newList = {
       name:req.param('name'),
-      boardId: req.param('boardId')
+      boardId: req.param('boardId'),
     };
     if (newList.name && newList.boardId){
-      if (user.canAddList(newList.boardId)){
-        newList.status = 0;
-        List.findByBoardId(newList.boardId).done(function(err, lists){
-          if (err){
-            res.json(errors.errDb);
-          }
-          else {
-            newList.order = lists.length;
-            List.create(newList).done(function(err, addedList){
-              if (err){
-                res.json(errors.errDb);
-              }
-              else {
-                res.json(addedList);
-              }
-            });
-          }
-
-        });
-      }
-      else {
-       res.json(errors.errNotAllowed);
-     }
+      List.add(newList).done(function(list){
+        res.json(list);
+      }, function(){
+        res.json(errors.errDb);
+      });
+    }
+    else {
+     res.json(errors.errNotAllowed);
    }
-   else {
-    res.json(errors.errInvalidFormat);
-  }
 },
 
 changeOrder: function(req, res){

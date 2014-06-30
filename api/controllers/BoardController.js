@@ -17,7 +17,6 @@
  'use strict';
  var when = require('when');
  var errors = require('../services/errors');
- var UserService = require('../services/UserService');
  module.exports = {
 
 
@@ -65,7 +64,29 @@ add: function(req, res){
         };
 
         Board.add(newBoard).then(function(board){
+          var listToDo= {
+            boardId: board.id,
+            name: 'Todo'
+          };
+          var listDoing= {
+            boardId: board.id,
+            name: 'Doing'
+          };
+          var listDone= {
+            boardId: board.id,
+            name: 'Done'
+          };
+          var promises = [];
+          promises.push(List.add(listToDo));
+          promises.push(List.add(listDoing));
+          promises.push(List.add(listDone));
+
+          when.all(promises).done(function(){
            res.json(board);
+          }, function(){
+           res.json(errors.errDb);
+          });
+
         }, function(error){
            res.json(error);
         });
