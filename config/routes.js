@@ -77,6 +77,11 @@ module.exports.routes = {
     action: 'add'
   },
 
+  'post /list/changeOrder': {
+    controller: 'list',
+    action: 'changeOrder'
+  },
+
   'get /board/getList/:boardId': {
     controller: 'board',
     action: 'getList'

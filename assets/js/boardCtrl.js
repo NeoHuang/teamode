@@ -23,11 +23,21 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		},
 		stop: function (event, ui) {
 			ui.item.removeClass('tilt');
+			var order = $scope.lists.map(function(i){
+		        return i.id;
+		      }).join(', ');
+			var data = {
+				boardId: $('#title').data('boardid'),
+				order: order
+			};
+			httpService.sortList(data, function(){
+
+			});
+		},
+		update: function(event, ui){
 			var data = $scope.lists.map(function(i){
 		        return i.id;
 		      }).join(', ');
-		},
-		update: function(event, ui){
 		},
 		placeholder: "list-placeholder ui-corner-all",
 		handle: '.list-title'

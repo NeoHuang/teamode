@@ -70,6 +70,32 @@ module.exports = {
   	else {
   		return when.reject({error: 500, message: 'invalid format'});
   	}
+  },
+
+  getLists: function(boardId){
+    return when.promise(function(resolve, reject){
+      Board.findOne(boardId).done(function(err, board){
+        if (err){
+          reject(errors.errDb);
+
+        }
+        else if (!board){
+          reject(errors.boardNotFound);
+        }
+        else {
+          List.findByBoardId(boardId).done(function(err, lists){
+            if (err){
+              reject(errors.errDb);
+            }
+            else {
+              resolve(lists);
+            }
+          })
+        }
+      })
+
+    })
+
   }
 
 

@@ -78,7 +78,7 @@ getList: function(req, res){
         res.json(errors.errDb);
       }
       else if (board){
-        List.findByBoardId(req.param('boardId')).done(function(err, lists){
+        List.findByBoardId(req.param('boardId')).sort('order').done(function(err, lists){
           if (err){
             res.json(errors.errDb);
           }

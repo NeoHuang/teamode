@@ -17,7 +17,19 @@ module.exports = {
 	errInvalidFormat: {
 		error: 500,
 		message: 'invalid request format'
+	},
+
+	errInvalidData: {
+		error: 500,
+		message: 'invalid request input'
+	},
+
+	errBoardNotFound: {
+		error: 404,
+		message: 'board not found'
 	}
+
+
 
 
 }
