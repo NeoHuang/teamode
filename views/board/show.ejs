@@ -6,7 +6,7 @@
 				<div class="list-title">
 					<span>{{list.name}}</span>
 				</div>
-				<div class="card-list" ui-sortable="cardSortableOpt" ng-model="list.issues">
+				<div class="card-list" id="list_{{list.id}}" ui-sortable="cardSortableOpt" ng-model="list.issues">
 					<div ng-repeat="issue in list.issues" class="card" ng-class="issue.class">
 						<a class="card-title" href="#">{{issue.summary}}<br class="clear"></a>
 					</div>

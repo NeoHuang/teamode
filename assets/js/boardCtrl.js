@@ -54,6 +54,20 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 		},
 		stop: function (event, ui){
 			ui.item.removeClass('tilt');
+
+			var movedData = ui.item.sortable.moved;
+			if (movedData){
+				var fromList = ui.item.sortable.moved.listId;
+				var toList = parseInt(ui.item.sortable.droptarget.attr('id').substring(5));
+				movedData.listId = toList;
+				console.log('moved from ' + fromList + ' to ' + toList);
+			}
+
+			var fromIndex = ui.item.sortable.index;
+			var toIndex = ui.item.sortable.dropindex;
+			console.log('index change from' + fromIndex + 'to' + toIndex);
+
+			// console.log(toList);
 		},
 		placeholder: "card-placeholder ui-corner-all",
 
