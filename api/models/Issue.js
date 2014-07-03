@@ -54,7 +54,7 @@ module.exports = {
 
   getIssues: function(listId){
   	return when.promise(function(resolve, reject){
-	    Issue.findByListId(listId).done(function(err, issues){
+	    Issue.findByListId(listId).sort('order').done(function(err, issues){
 	    	if (err){
 	    		reject(errors.errDb);
 	    	}
@@ -82,8 +82,13 @@ module.exports = {
 	  			}
 	  			else {
 	  				Issue.getIssues(newIssue.listId).then(function(issues){
-	  					newIssue.order = issues.length;
-	  					console.log("length" + issues.length);
+	  					var largestOrder = -1;
+	  					issues.forEach(function(i){
+	  						if (i.order > largestOrder){
+	  							largestOrder = i.order;
+	  						}
+	  					});
+	  					newIssue.order = largestOrder + 1;
 		  				Issue.create(newIssue).done(function(err, issue){
 		  					if (err){
 		  						reject(errors.errDb);

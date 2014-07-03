@@ -27,6 +27,11 @@ module.exports = {
 	errBoardNotFound: {
 		error: 404,
 		message: 'board not found'
+	},
+
+	errIssueNotFound: {
+		error: 404,
+		message: 'issue not found'
 	}
 
 

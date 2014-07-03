@@ -83,7 +83,7 @@ module.exports = {
           reject(errors.boardNotFound);
         }
         else {
-          List.findByBoardId(boardId).done(function(err, lists){
+          List.findByBoardId(boardId).sort('order').done(function(err, lists){
             if (err){
               reject(errors.errDb);
             }

@@ -107,7 +107,7 @@ getList: function(req, res){
             var promises = [];
             lists.forEach(function(list, i){
               promises.push(when.promise(function(resolve, reject){
-                Issue.findByListId(lists[i].id).done(function(err, issues){
+                Issue.findByListId(lists[i].id).sort('order').done(function(err, issues){
                   if (err){
                     reject();
 

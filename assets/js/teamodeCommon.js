@@ -68,6 +68,14 @@ var teamode = teamode || {
 
 			addIssue: function(issue, fn, errFn){
 				teamode.post($http, '/issue/add', angular.toJson(issue), fn, errFn);
+			},
+
+			sortIssue: function(orderData, fn, errFn){
+				teamode.post($http, '/issue/changeOrder', angular.toJson(orderData), fn, errFn);
+			},
+
+			moveIssue: function(moveData, fn, errFn){
+				teamode.post($http, '/issue/move', angular.toJson(moveData), fn, errFn);
 			}
 
 
