@@ -31,7 +31,7 @@
         }
         else {
           var largestOrder = -1;
-          list.forEach(function(i){
+          lists.forEach(function(i){
             if (i.order > largestOrder){
               largestOrder = i.order;
             }
