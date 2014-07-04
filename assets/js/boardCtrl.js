@@ -31,7 +31,7 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 				order: order
 			};
 			httpService.sortList(data, function(){
-
+				//Todo
 			});
 		},
 		update: function(event, ui){
@@ -56,16 +56,46 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			ui.item.removeClass('tilt');
 
 			var movedData = ui.item.sortable.moved;
+			//find the target list id
+			var toList = parseInt(ui.item.sortable.droptarget.data('list-id'));
+			var fromList = null;
+			//if it's moved from one list to another
 			if (movedData){
-				var fromList = ui.item.sortable.moved.listId;
-				var toList = parseInt(ui.item.sortable.droptarget.attr('id').substring(5));
+				fromList = movedData.listId;
 				movedData.listId = toList;
 				console.log('moved from ' + fromList + ' to ' + toList);
 			}
-
 			var fromIndex = ui.item.sortable.index;
 			var toIndex = ui.item.sortable.dropindex;
-			console.log('index change from' + fromIndex + 'to' + toIndex);
+			if (!movedData){
+				for (var i = 0; i < $scope.lists.length; i++){
+					if ($scope.lists[i].id === toList){
+						var order = $scope.lists[i].issues.map(function(i){
+							return i.id;
+						}).join(', ');
+						var data = {
+							listId: toList,
+							order: order
+						}
+						httpService.sortIssue(data, function(){
+							//Todo
+
+						})
+						break;
+					}
+				}
+
+			}
+			else {
+				var data = {
+					issueId: movedData.id,
+					to: toList,
+					order: toIndex
+				}
+				httpService.moveIssue(data, function(){
+					//Todo
+				})
+			}
 
 			// console.log(toList);
 		},
@@ -188,8 +218,8 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 			$scope.newIssueSummary = "";
 			httpService.addIssue(newIssue, function(data){
 				if (data && !data.error){
-					newIssue.class = generateIssueClass(newIssue.severity);
-					$scope.lists[index].issues.push(newIssue);
+					data.class = generateIssueClass(newIssue.severity);
+					$scope.lists[index].issues.push(data);
 					// $scope.closeNewIssue($scope.lists[index].id);
 				}
 				else {
