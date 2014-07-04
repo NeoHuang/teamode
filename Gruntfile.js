@@ -487,6 +487,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'copy:config',
     'copy:dev',
     'coffee:dev',
     'concat',
