@@ -14,7 +14,7 @@
     "when": "3.2.2"
   },
   "scripts": {
-    "start": "forever start app.js",
+    "start": "node app.js",
     "debug": "node debug app.js"
   },
   "main": "app.js",
