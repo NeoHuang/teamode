@@ -1,7 +1,7 @@
 {
   "name": "teamode",
   "private": true,
-  "version": "0.0.0-5",
+  "version": "0.0.0-18",
   "description": "a Sails application",
   "dependencies": {
     "bower": "~1.3.4",
@@ -12,10 +12,6 @@
     "sails": "0.9.16",
     "sails-disk": "~0.9.0",
     "when": "3.2.2"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js"
   },
   "main": "app.js",
   "repository": "",
@@ -30,5 +26,8 @@
   "subdomain": "neohuang-teamode",
   "engines": {
     "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
