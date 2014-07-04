@@ -32,6 +32,7 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha test"
   }
 }
