@@ -24,6 +24,10 @@
     "grunt-bower-task": "^0.3.4"
   },
   "subdomain": "neohuang-teamode",
+  "domains": [
+    "teamode.de",
+    "www.teamode.de"
+  ],
   "engines": {
     "node": "0.10.x"
   },
