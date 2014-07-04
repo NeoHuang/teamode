@@ -1,7 +1,7 @@
 Teamode
 =======
 
-[ ![Codeship Status for NeoHuang/teamode](https://codeship.io/projects/03389690-e58c-0131-392c-0ea154bde2ac/status)](https://codeship.io/projects/25761)
+[ ![Codeship Status for NeoHuang/teamode](https://codeship.io/projects/03389690-e58c-0131-392c-0ea154bde2ac/status)](https://codeship.io/projects/25761)  &nbsp; &nbsp; &nbsp;      [![Build Status](https://travis-ci.org/NeoHuang/teamode.svg?branch=master)](https://travis-ci.org/NeoHuang/teamode)
 
 Teamode is an agile team collaborate platform
 
