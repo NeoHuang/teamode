@@ -38,6 +38,8 @@ module.exports = {
 
   port: process.env.PORT || 80,
 
+  host: 'neohuang-teamode.jit.su',
+
 
 
   // The runtime "environment" of your Sails app is either 'development' or 'production'.
