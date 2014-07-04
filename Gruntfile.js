@@ -170,6 +170,13 @@ module.exports = function (grunt) {
             expand: true
           }
         ]
+      },
+      config: {
+        src: 'config/local.example.js',
+        dest: 'config/local.js',
+        filter: function(filepath){
+          return !(grunt.file.exists('config/local.js'));
+        }
       }
     },
 
@@ -437,6 +444,7 @@ module.exports = function (grunt) {
     'jst:dev',
     'less:dev',
     'copy:dev',    
+    'copy:config',
     'coffee:dev'
   ]);
 
