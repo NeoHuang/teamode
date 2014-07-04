@@ -133,10 +133,21 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadNpmTasks('grunt-bower-task');
 
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    bower: {
+      install: {
+        options: {
+          targetDir: './bower_components/'
+        }
+
+      }
+      
+    },
 
     copy: {
       dev: {
@@ -172,7 +183,7 @@ module.exports = function (grunt) {
         ]
       },
       config: {
-        src: 'config/local.example.js',
+        src: 'config/local.js.example',
         dest: 'config/local.js',
         filter: function(filepath){
           return !(grunt.file.exists('config/local.js'));
@@ -434,6 +445,7 @@ module.exports = function (grunt) {
 
   // When Sails is lifted:
   grunt.registerTask('default', [
+    'bower',
     'compileAssets',
     'linkAssets',
     'watch'
@@ -463,6 +475,7 @@ module.exports = function (grunt) {
   // Build the assets into a web accessible folder.
   // (handy for phone gap apps, chrome extensions, etc.)
   grunt.registerTask('build', [
+    'bower',
     'compileAssets',
     'linkAssets',
     'clean:build',
