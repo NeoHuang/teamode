@@ -475,7 +475,6 @@ module.exports = function (grunt) {
   // Build the assets into a web accessible folder.
   // (handy for phone gap apps, chrome extensions, etc.)
   grunt.registerTask('build', [
-    'bower',
     'compileAssets',
     'linkAssets',
     'clean:build',
@@ -484,6 +483,7 @@ module.exports = function (grunt) {
 
   // When sails is lifted in production
   grunt.registerTask('prod', [
+    'bower',
     'clean:dev',
     'jst:dev',
     'less:dev',
