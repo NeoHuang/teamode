@@ -92,7 +92,6 @@
 
   },
   checkEmailNotExist : function(email){
-    console.log("checkEmail");
     return when.promise(function(resolve, reject, notify) {
       User.findOneByEmail(email).done(function(err, usr){
         if (err){
@@ -150,7 +149,6 @@
 
     }
     else {
-      console.log('adfadfadfa');
       sails.log.warn("required information not complete " + JSON.stringify(newUser));
       return when.reject({error:500, message: "required information not complete"});
     }
