@@ -1,5 +1,5 @@
 {
 	"node":true,
 	"undef":true,
-	"predef": ["Board", "Issue", "Token", "User", "List", "sails"]
+	"predef": ["Board", "Issue", "Token", "User", "List", "sails", "before", "after", "describe", "it"]
 }

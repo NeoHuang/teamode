@@ -129,10 +129,9 @@
 
   add: function (newUser){
     if (newUser.username && 
-      newUser.password &&
-      newUser.email){
-      newUser.username = newUser.username.toLowerCase();
-      if (!(/^[a-z0-9_-]{3,20}$/.test(newUser.username))){
+      newUser.password  &&
+      newUser.email ){
+      if (!(/^[A-Za-z0-9_-]{3,20}$/.test(newUser.username))){
         sails.log.warn("username:" + newUser.username + " format not correct");
         return when.reject({error: 500, message: "invalid username format"});
       }  
@@ -151,11 +150,13 @@
 
     }
     else {
+      console.log('adfadfadfa');
       sails.log.warn("required information not complete " + JSON.stringify(newUser));
       return when.reject({error:500, message: "required information not complete"});
     }
   },
 
+  //given the username and password, to see if they match;
   check: function (reqUser){
     if (reqUser.username && 
         reqUser.password){
