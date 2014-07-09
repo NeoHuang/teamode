@@ -66,7 +66,7 @@
           sails.log.error(error);
           reject({error: 500, message: "DB error"});
         } else if (usr){
-          sails.log.warn(username + " exist");
+          sails.log.debug(username + " exist");
           reject({error: 500, message: "user exist"});
         } else {
           sails.log.info(username + " OK");
@@ -98,7 +98,7 @@
           sails.log.error(error);
           reject({error: 500, message: "DB error"});
         } else if (usr){
-          sails.log.warn(email + " exist");
+          sails.log.debug(email + " exist");
           reject({error:500, message: "email exist"});
         } else {
           sails.log.info(email + " OK");
@@ -131,11 +131,11 @@
       newUser.password  &&
       newUser.email ){
       if (!(/^[A-Za-z0-9_-]{3,20}$/.test(newUser.username))){
-        sails.log.warn("username:" + newUser.username + " format not correct");
+        sails.log.debug("username:" + newUser.username + " format not correct");
         return when.reject({error: 500, message: "invalid username format"});
       }  
       if (!(/^.{6,20}$/.test(newUser.password))){
-        sails.log.warn("password:" + newUser.password + " format not correct");
+        sails.log.debug("password:" + newUser.password + " format not correct");
         return when.reject({error:500, message: "invalid password format"});
       }  
 
@@ -149,7 +149,7 @@
 
     }
     else {
-      sails.log.warn("required information not complete " + JSON.stringify(newUser));
+      sails.log.debug("required information not complete " + JSON.stringify(newUser));
       return when.reject({error:500, message: "required information not complete"});
     }
   },
@@ -158,7 +158,6 @@
   check: function (reqUser){
     if (reqUser.username && 
         reqUser.password){
-      reqUser.username = reqUser.username.toLowerCase();
       return when.promise(function(resolve, reject, notify) {
           User.findOneByUsername(reqUser.username).done(function(err, user){
           if (err){

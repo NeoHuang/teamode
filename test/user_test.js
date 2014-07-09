@@ -1,38 +1,10 @@
 'use strict';
 
-var chai = require('chai'),
-   Sails = require('sails'),
-   barrels = require('barrels'),
-   fixtures, app;
-
+var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
+var setup = require('./test_setup');
 
-before(function (done) {
-  // Lift Sails with test database
-  Sails.lift({
-    log: {
-      level: 'error'
-    },
-    adapters: {
-      default: 'sails-memory'
-    }
-  }, function(err, sails) {
-    if (err)
-      return done(err);
-    app = sails;
-    // Load fixtures
-    barrels.populate(function(err) {
-      fixtures = barrels.objects;
-      done(err, sails);
-    });
-    // Save original objects in `fixtures` variable
-  });
-});
-
-after(function (done) {
-  app.lower(done);
-});
 
 describe('User', function(){
 	describe('#checkNameNotExist()', function(){
@@ -131,7 +103,6 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
         expect(err.message).to.contain('required information not complete');
         done();
       });
@@ -147,7 +118,7 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.contain('required information not complete');
         done();
       });
@@ -162,7 +133,7 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.contain('required information not complete');
         done();
       });
@@ -177,7 +148,7 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.equal('invalid username format');
         done();
       });
@@ -192,7 +163,7 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.equal('invalid username format');
         done();
       });
@@ -207,7 +178,7 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.equal('invalid username format');
         done();
       });
@@ -222,11 +193,41 @@ describe('User', function(){
       User.add(user).done(function(){
         done('should failed');
       }, function(err){
-        console.log(err);
+        
         expect(err.message).to.equal('invalid username format');
         done();
       });
     });
+
+    it('should fail because password is too short', function(done){
+      var user = {
+        username: 'faasdfa',
+        password: 'abcde',
+        email: 'abc@asdfasdfs.com'
+      }
+      User.add(user).done(function(){
+        done('should failed');
+      }, function(err){
+        
+        expect(err.message).to.equal('invalid password format');
+        done();
+      });
+    });
+
+    it('should fail because password is too long', function(done){
+      var user = {
+        username: 'faasdfa',
+        password: '123456789012345678901',
+        email: 'abc@asdfasdfs.com'
+      }
+      User.add(user).done(function(){
+        done('should failed');
+      }, function(err){
+        
+        expect(err.message).to.equal('invalid password format');
+        done();
+      });
+    });        
 
     it('should successfully add a user', function(done){
       var user = {
