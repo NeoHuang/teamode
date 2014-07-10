@@ -1,4 +1,4 @@
-var teamodeApp = angular.module("teamodeApp",[]);
+var teamodeApp = angular.module("teamodeApp",['ui.bootstrap']);
 teamodeApp.factory("signupService", ["$http", function($http){
 	return {
 		post: function(postData, fn){
@@ -16,10 +16,24 @@ teamodeApp.factory("signupService", ["$http", function($http){
 }]);
 SignupCtrl = function($scope, $http, signupService){
 	$scope.user = {};
+	$scope.alerts=[];
 	$scope.register = function(){
-		if ($scope.user.username &&
-			$scope.user.email &&
-			$scope.user.password){
+
+		$scope.alerts = [];
+		if (!$scope.user.username){
+			$scope.alerts.push({type:'danger', msg: 'invalid username'});
+		}
+		if (!$scope.user.email){
+			$scope.alerts.push({type:'danger', msg: 'invalid email'});
+		}
+		if (!$scope.user.password){
+			$scope.alerts.push({type:'danger', msg: 'invalid password, the password length should be between 6 and 20'});
+			$('#password').addClass('error');
+		}
+		if ($scope.passwordConfirm !== $scope.user.password){
+			$scope.alerts.push({type:'danger', msg: 're-typed password doesn\'t match password'});
+		}
+		if ($scope.alerts.length === 0){
 			signupService.post(angular.toJson($scope.user), function(data){
 				if (data.error){
 					teamode.showMsg(data.error);
@@ -31,7 +45,11 @@ SignupCtrl = function($scope, $http, signupService){
 
 				
 			});
+		}
 	}
-}
+
+	$scope.closeAlert = function(index){
+		$scope.alerts.splice(index, 1);
+	}
 }
 SignupCtrl['$inject'] = ["$scope", "$http", "signupService"];
