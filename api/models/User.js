@@ -7,7 +7,7 @@
  */
 
  var when = require('when');
-
+ var validator = require('validator');
  module.exports = {
 
   attributes: {
@@ -139,6 +139,10 @@
         return when.reject({error:500, message: "invalid password format"});
       }  
 
+      if (!validator.isEmail(newUser.email)){
+        sails.log.debug("email:" + newUser.email + " format not correct");
+        return when.reject({error:500, message: "invalid email format"});
+      }  
       return when(User.checkNameNotExist(newUser.username))
       .then (function() {
         return User.checkEmailNotExist(newUser.email);

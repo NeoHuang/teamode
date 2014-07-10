@@ -229,6 +229,20 @@ describe('User', function(){
       });
     });        
 
+    it('should fail because email format is not correct', function(done){
+      var user = {
+        username: 'faasdfa',
+        password: '1234567890123456789',
+        email: 'abcasdfasdfs.com'
+      }
+      User.add(user).done(function(){
+        done('should failed');
+      }, function(err){
+        expect(err.message).to.equal('invalid email format');
+        done();
+      });
+    });        
+
     it('should successfully add a user', function(done){
       var user = {
         username: 'Neo',
