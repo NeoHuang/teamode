@@ -1,0 +1,18 @@
+[
+  {
+    "name": "TEst Board",
+    "description": "",
+    "ownerId": 1,
+    "createdAt": "2014-07-04T15:41:57.827Z",
+    "updatedAt": "2014-07-04T15:41:57.827Z",
+    "id": 1
+  },
+  {
+    "name": "Test Board 2",
+    "description": "",
+    "ownerId": 1,
+    "createdAt": "2014-07-04T15:55:48.318Z",
+    "updatedAt": "2014-07-04T15:55:48.318Z",
+    "id": 2
+  }
+]

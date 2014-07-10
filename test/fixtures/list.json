@@ -1,0 +1,38 @@
+[
+  {
+    "name": "todo",
+    "boardId": 1,
+    "status": 0,
+    "order": 0,
+    "createdAt": "2014-07-04T15:53:45.214Z",
+    "updatedAt": "2014-07-04T15:53:45.214Z",
+    "id": 1
+  },
+  {
+    "boardId": 2,
+    "name": "Todo",
+    "status": 0,
+    "order": 0,
+    "createdAt": "2014-07-04T15:55:48.319Z",
+    "updatedAt": "2014-07-04T15:55:48.319Z",
+    "id": 2
+  },
+  {
+    "boardId": 2,
+    "name": "Doing",
+    "status": 0,
+    "order": 1,
+    "createdAt": "2014-07-04T15:55:48.320Z",
+    "updatedAt": "2014-07-04T15:55:48.320Z",
+    "id": 3
+  },
+  {
+    "boardId": 2,
+    "name": "Done",
+    "status": 0,
+    "order": 2,
+    "createdAt": "2014-07-04T15:55:48.321Z",
+    "updatedAt": "2014-07-04T15:55:48.321Z",
+    "id": 4
+  }
+]

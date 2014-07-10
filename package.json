@@ -22,7 +22,9 @@
     "mocha": "^1.20.1",
     "barrels": "0.0.3",
     "sails-memory": "^0.9.1",
-    "grunt-bower-task": "^0.3.4"
+    "grunt-bower-task": "^0.3.4",
+    "chai": "^1.9.1",
+    "request": "^2.37.0"
   },
   "subdomain": "neohuang-teamode",
   "domains": [

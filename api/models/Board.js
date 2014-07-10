@@ -53,7 +53,8 @@ module.exports = {
 
   add: function(newBoard){
   	if (newBoard.name && 
-  		newBoard.ownerId){
+  		newBoard.ownerId != null &&
+      newBoard.ownerId != undefined){
   		return when.promise(function(resolve, reject){
 	      Board.create(newBoard).done(function(error, board) { 
         if (error){

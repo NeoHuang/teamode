@@ -55,7 +55,9 @@
    		listId: req.param('listId'),
    		order: order
    	};
-   	if (orderData.listId && orderData.order){
+   	if (orderData.listId != null && 
+   		orderData.listId != undefined && 
+   		orderData.order){
    		Issue.getIssues(orderData.listId).done(function(issues){
    			var sortedOrder = orderData.order.slice(0);
    			sortedOrder.sort();
@@ -75,7 +77,7 @@
    							oi !== l.order){
    							issues[li].order = oi;
    						issues[li].changed = true;
-   						console.log('changed');
+   					
    					}
    				});
    				});
@@ -119,7 +121,6 @@
 			to: req.param('to'),
 			order: req.param('order')
 		};
-		console.log(moveData);
 		if (moveData.issueId !== null &&
 			moveData.to !== null &&
 			moveData.order !== null){

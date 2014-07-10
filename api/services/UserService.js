@@ -25,7 +25,7 @@ module.exports = {
 						if (!err){
 							setTokenCookie(res, userCookie, t);
 						}
-						console.log("-------------" + tokenSaved.userhash);
+						sails.log.debug("-------------" + tokenSaved.userhash);
 						next();
 					});
 

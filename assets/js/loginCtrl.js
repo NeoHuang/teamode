@@ -12,7 +12,7 @@ LoginCtrl = function($scope, httpService){
 		httpService.login($scope.user, function(data){
 			console.log(data);
 			if (data.error){
-				teamode.showMsg(data.error);
+				teamode.showMsg(data.message);
 			}
 			else {
 				window.location = "/";

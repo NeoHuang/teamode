@@ -1,57 +1,66 @@
 <script type="text/javascript" src="/js/teamodeCommon.js"></script>
-	<script type="text/javascript" src="/js/signupCtrl.js"></script>
-	<div class="row" ng-app="teamodeApp">
-		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3>Sign Up</h3>
-				</div>
-				<div ng-controller="SignupCtrl" class="panel-body">
-					<form role="form" name="signupForm">
-						<hr class="colorgraph">
-						<div class="form-group" >
-							<input type="text" name="username" id="username" class="form-control " placeholder="Username" tabindex="1" data-toggle="tooltip"  title="Username 3-20 characters or numbers" ng-model="user.username" required>
-						</div>
-						<div class="form-group" >
-							<input type="email" name="email" id="email" class="form-control " placeholder="Email Address" tabindex="2" ng-model="user.email" required>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-6">
-								<div class="form-group" >
-									<input type="password" name="password" id="password" class="form-control " placeholder="Password" tabindex="3" ng-model="user.password" required>
+<script type="text/javascript" src="/js/signupCtrl.js"></script>
+<div  ng-app="teamodeApp">
+	<div ng-controller="SignupCtrl">
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>Sign Up</h3>
+					</div>
+					<div  class="panel-body">
+						<form role="form" name="signupForm">
+							<hr class="colorgraph">
+							<div class="form-group" >
+								<input type="text" name="username" id="username" class="form-control " placeholder="Username" tabindex="1" data-toggle="tooltip"  title="Username 3-20 characters or numbers" ng-model="user.username" required>
+							</div>
+							<div class="form-group" >
+								<input type="email" name="email" id="email" class="form-control " placeholder="Email Address" tabindex="2" ng-model="user.email" required>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group" >
+										<input type="password" name="password" id="password" class="form-control " placeholder="Password" tabindex="3" ng-model="user.password" required>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group" >
+										<input type="password" name="password_confirmation" id="password_confirmation" class="form-control " placeholder="Confirm Password" tabindex="4" ng-model="passwordConfirm" required>
+									</div>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6 col-md-6">
-								<div class="form-group" >
-									<input type="password" name="password_confirmation" id="password_confirmation" class="form-control " placeholder="Confirm Password" tabindex="4" ng-model="passwordConfirm" required>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group" >
+										<input type="text" name="first_name" id="first_name" class="form-control " placeholder="First Name" tabindex="5" ng-model="user.firstName" required>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group" >
+										<input type="text" name="lastName" id="last_name" class="form-control " placeholder="Last Name" tabindex="6" ng-model="user.lastName" required>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-6">
-								<div class="form-group" >
-									<input type="text" name="first_name" id="first_name" class="form-control " placeholder="First Name" tabindex="5" ng-model="user.firstName" required>
+							<hr class="colorgraph">
+							<div class="row">
+								<div class="col-xs-12 col-sm-9 col-md-9">
+									<button type="button"  class="btn btn-primary btn-block " tabindex="7" ng-click="register()" >Register</button>
+								</div>
+								<div class="col-xs-12 col-sm-3 col-md-3">
+									<a href="/login" class="btn btn-success btn-block " text="Login">Login</a>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6 col-md-6">
-								<div class="form-group" >
-									<input type="text" name="lastName" id="last_name" class="form-control " placeholder="Last Name" tabindex="6" ng-model="user.lastName" required>
-								</div>
-							</div>
-						</div>
-						<hr class="colorgraph">
-						<div class="row">
-							<div class="col-xs-12 col-sm-9 col-md-9">
-								<button type="button"  class="btn btn-primary btn-block " tabindex="7" ng-click="register()" >Register</button>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-md-3">
-							<a href="/login" class="btn btn-success btn-block " text="Login">Login</a>
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
-<div id=alert class="alert alert-info fix-bottom container hidden-ele"></div>
+</div>
+<!-- <div id=alert class="alert alert-info fix-bottom container hidden-ele"></div> -->
