@@ -62,7 +62,7 @@ module.exports.controllers = {
      * `actions` are enabled by default, and are OK for production-- however,
      * you must take great care not to inadvertently expose unsafe controller logic to GET requests.
      */
-    actions: process.env.NODE_ENV == 'development',
+    actions: process.env.NODE_ENV !='production',
 
 
     
@@ -82,7 +82,7 @@ module.exports.controllers = {
      *
      * `rest` blueprints are enabled by default, and suitable for a production scenario.
      */
-    rest: true,
+    rest: process.env.NODE_ENV !='production',
 
 
     /**
@@ -94,7 +94,7 @@ module.exports.controllers = {
      *
      * `shortcuts` are enabled by default, but SHOULD BE DISABLED IN PRODUCTION!!!!!
      */
-    shortcuts: true,
+    shortcuts: process.env.NODE_ENV !='production',
 
 
 
