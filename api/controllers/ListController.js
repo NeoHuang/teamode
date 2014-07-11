@@ -60,7 +60,7 @@ changeOrder: function(req, res){
       var sortedOrder = orderData.order.slice(0);
       sortedOrder.sort();
       var sortedList = lists.map(function(l){
-        return l.id;
+        return l.id.toString();
       }).sort();
 
       if (JSON.stringify(sortedOrder) != JSON.stringify(sortedList)){

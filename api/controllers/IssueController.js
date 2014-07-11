@@ -57,12 +57,13 @@
    	};
    	if (orderData.listId != null && 
    		orderData.listId != undefined && 
-   		orderData.order){
+   		orderData.order != null && 
+   		orderData.order != undefined){
    		Issue.getIssues(orderData.listId).done(function(issues){
    			var sortedOrder = orderData.order.slice(0);
    			sortedOrder.sort();
    			var sortedList = issues.map(function(l){
-   				return l.id;
+   				return l.id.toString();
    			}).sort();
 
    			if (JSON.stringify(sortedOrder) != JSON.stringify(sortedList)){
