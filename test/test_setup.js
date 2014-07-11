@@ -26,3 +26,14 @@ before(function (done) {
 after(function (done) {
   app.lower(done);
 });
+
+module.exports = {
+  barrels: barrels,
+  fixtures: fixtures,
+  resetDb: function(done){
+            barrels.populate(function(err) {
+              fixtures = barrels.objects;
+              done(err, sails);
+            });
+          }
+}

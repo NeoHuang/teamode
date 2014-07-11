@@ -133,6 +133,8 @@
 					res.json(errors.errIssueNotFount);
 				}
 				else {
+
+
 					List.isInSameBoard([issue.listId, moveData.to]).done(function(){
 						var promises = [];
 						//increase the order of all issues whose order is larger or equal to moveData.order in target list;
