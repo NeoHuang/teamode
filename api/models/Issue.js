@@ -32,7 +32,7 @@ module.exports = {
 			defaultsTo: 0
 		},
 		listId: {
-			type: 'integer',
+			type: 'string',
 			required: true
 		},
 		point: {
@@ -44,7 +44,7 @@ module.exports = {
 			defaultsTo: 0
 		},
 		creatorId: {
-			type: 'integer',
+			type: 'string',
 			required: true
 		}
 

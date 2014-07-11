@@ -16,8 +16,9 @@
   	nickname: 'string'
   	*/
   	name: 'string',
-  	boardId: 'integer',
+  	boardId: 'string',
   	order: 'integer',
+    creatorId: 'string',
   	status: 'integer'//0: normal, 1: archived
 
   },

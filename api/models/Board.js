@@ -29,7 +29,7 @@ module.exports = {
     },
 
     ownerId: {
-    	type: 'integer',
+    	type: 'string',
     	required: true
     }
 

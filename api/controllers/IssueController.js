@@ -49,7 +49,7 @@
 
    changeOrder: function(req, res){
    	var order = req.param('order').split(',').map(function(e){
-   		return parseInt(e);
+   		return e.trim();
    	});
    	var orderData = {
    		listId: req.param('listId'),

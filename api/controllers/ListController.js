@@ -33,6 +33,7 @@ var when = require('when');
     var newList = {
       name:req.param('name'),
       boardId: req.param('boardId'),
+      creatorId: req.user.id
     };
     if (newList.name && newList.boardId){
       List.add(newList).done(function(list){
@@ -48,7 +49,7 @@ var when = require('when');
 
 changeOrder: function(req, res){
   var order = req.param('order').split(',').map(function(e){
-    return parseInt(e);
+    return e.trim();
   });
   var orderData = {
     boardId: req.param('boardId'),
