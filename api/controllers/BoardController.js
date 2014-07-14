@@ -42,9 +42,8 @@
       if (req.param('id')){
          Board.findOne(req.param('id')).done(function(err, board){
             if (!err){
-              var username = user.firstName + ' ' + user.lastName;
                res.view('board/show', {layout: 'dashboardLayout', 
-                  username: username, 
+                  user: user, 
                   boardName: board.name,
                   boardId: board.id});
 

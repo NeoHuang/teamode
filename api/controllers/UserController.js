@@ -44,8 +44,8 @@ module.exports = {
           username: req.param("username"),
           password: req.param('password'),
           email: req.param('email'),
-          firstName: req.param('firstName'),
-          lastName: req.param('lastName')
+          firstName: req.param('firstName')||"",
+          lastName: req.param('lastName')||""
         }
         when(User.add(newUser)).then(function(user){
           delete user.password;
