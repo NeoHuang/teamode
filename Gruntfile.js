@@ -160,7 +160,7 @@ module.exports = function (grunt) {
         },
           {
             cwd: './bower_components',
-            src: ['**/*'],
+            src: ['**/*.min.js','**/*.css','**/fonts/*', '**/*.cookie.js'],
             dest: '.tmp/public/vendor/',
             expand:true
           }
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         },
           {
             cwd: './bower_components',
-            src: ['**/*'],
+            src: ['**/*.min.js','**/*.css', '**/fonts/*', '**/*.cookie.js'],
             dest: 'www/vendor/',
             expand: true
           }
