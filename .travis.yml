@@ -6,7 +6,6 @@ before_install:
   - "npm install -g grunt-cli"
   - "npm install -g bower"
   - "bower cache clean"
-install: 
-	- "npm install"
   - "bower install"
+install: npm install
 before_script: grunt prod
