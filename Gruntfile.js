@@ -445,7 +445,6 @@ module.exports = function (grunt) {
 
   // When Sails is lifted:
   grunt.registerTask('default', [
-    'bower',
     'compileAssets',
     'linkAssets',
     'watch'
@@ -483,7 +482,6 @@ module.exports = function (grunt) {
 
   // When sails is lifted in production
   grunt.registerTask('prod', [
-    'bower',
     'clean:dev',
     'jst:dev',
     'less:dev',
