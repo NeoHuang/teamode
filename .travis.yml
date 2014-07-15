@@ -4,6 +4,6 @@ node_js:
 before_install: 
   - "npm install -g mocha"
   - "npm install -g grunt-cli"
-  - "npm install -g bower@1.3.3"
+  - "npm install -g bower"
 install: npm install
 before_script: grunt prod
