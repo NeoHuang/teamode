@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/js/teamodeCommon.js"></script>
 <script type="text/javascript" src="/js/loginCtrl.js"></script>
-<div class="row" ng-app="teamodeLogin">
+<div class="row" ng-app="teamodeLogin" ng-cloak>
     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" ng-controller="LoginCtrl">
         <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-info">
