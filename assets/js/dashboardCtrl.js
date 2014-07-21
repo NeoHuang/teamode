@@ -60,6 +60,7 @@ dashboardApp.controller('NavCtrl', ['$scope', '$http','$modal', 'httpService', f
 				httpService.addBoard(board, function(data){
 					if (!data.err){
 						window.location = '/b/' + data.id;
+
 					}
 				})
 			}

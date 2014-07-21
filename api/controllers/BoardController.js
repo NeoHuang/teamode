@@ -16,6 +16,7 @@
  */
  'use strict';
  var when = require('when');
+ var sequence = require('when/sequence');
  var errors = require('../services/errors');
  module.exports = {
 
@@ -41,12 +42,18 @@
       var user = req.user;
       if (req.param('id')){
          Board.findOne(req.param('id')).done(function(err, board){
-            if (!err){
+            if (!err && board){
                res.view('board/show', {layout: 'dashboardLayout', 
                   user: user, 
                   boardName: board.name,
                   boardId: board.id});
 
+            }
+            else if (err){
+              res.serverError('an error occurs');
+            }
+            else {
+              res.notFound('board not found');
             }
 
          });
@@ -75,12 +82,13 @@ add: function(req, res){
             boardId: board.id,
             name: 'Done'
           };
-          var promises = [];
-          promises.push(List.add(listToDo));
-          promises.push(List.add(listDoing));
-          promises.push(List.add(listDone));
 
-          when.all(promises).done(function(){
+          List.add(listToDo).then(function(){
+            return List.add(listDoing);
+          }).then(function(){
+            return List.add(listDone);
+          }).done(function(){
+            console.log(board);
            res.json(board);
           }, function(){
            res.json(errors.errDb);
