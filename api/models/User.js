@@ -23,12 +23,14 @@
   		type: 'string',
   		maxLength: 20,
   		minLength: 3,
+      defaultsTo: ""
   	},
 
   	lastname: {
   		type: 'string',
   		maxLength: 20,
   		minLength: 3,
+      defaultsTo: ""
   	},
   	
   	password: {
