@@ -4,8 +4,7 @@ module.exports = {
 	index: function(req, res){
 		var user = req.user;
 
-		var username = user.firstName + " " + user.lastName;
-		res.view('home/dashboard', {layout: "dashboardLayout", username: username});
+		res.view('home/dashboard', {layout: "dashboardLayout", user: user});
 
 	}
 	

@@ -29,7 +29,7 @@ module.exports = {
     },
 
     ownerId: {
-    	type: 'integer',
+    	type: 'string',
     	required: true
     }
 
@@ -62,7 +62,7 @@ module.exports = {
           reject(errors.errDb);
         }
         else {
-          sails.log.info('new board:' + board.newBoard + ' created');
+          sails.log.info('new board:' + board.id + ' created');
           resolve(board);
         }
       });

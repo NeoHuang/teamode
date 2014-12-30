@@ -49,7 +49,7 @@
 
    changeOrder: function(req, res){
    	var order = req.param('order').split(',').map(function(e){
-   		return parseInt(e);
+   		return e.trim();
    	});
    	var orderData = {
    		listId: req.param('listId'),
@@ -57,12 +57,13 @@
    	};
    	if (orderData.listId != null && 
    		orderData.listId != undefined && 
-   		orderData.order){
+   		orderData.order != null && 
+   		orderData.order != undefined){
    		Issue.getIssues(orderData.listId).done(function(issues){
    			var sortedOrder = orderData.order.slice(0);
    			sortedOrder.sort();
    			var sortedList = issues.map(function(l){
-   				return l.id;
+   				return l.id.toString();
    			}).sort();
 
    			if (JSON.stringify(sortedOrder) != JSON.stringify(sortedList)){
@@ -132,6 +133,8 @@
 					res.json(errors.errIssueNotFount);
 				}
 				else {
+
+
 					List.isInSameBoard([issue.listId, moveData.to]).done(function(){
 						var promises = [];
 						//increase the order of all issues whose order is larger or equal to moveData.order in target list;

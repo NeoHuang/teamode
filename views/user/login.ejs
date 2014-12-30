@@ -1,14 +1,14 @@
 <script type="text/javascript" src="/js/teamodeCommon.js"></script>
 <script type="text/javascript" src="/js/loginCtrl.js"></script>
-<div class="row" ng-app="teamodeLogin">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-
+<div class="row" ng-app="teamodeLogin" ng-cloak>
+    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" ng-controller="LoginCtrl">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 >login </h3>           
                 <div style="float:right; font-size: 80%; position: relative; top: -10px"><a href="#">Forgot password?</a></div>
             </div>
-            <div class="panel-body" ng-controller="LoginCtrl">
+            <div class="panel-body" >
                 <hr class="colorgraph">
                 <form role="form" ng-submit="login()">
                     <div class="form-group"> 

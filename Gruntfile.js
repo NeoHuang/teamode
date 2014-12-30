@@ -160,7 +160,7 @@ module.exports = function (grunt) {
         },
           {
             cwd: './bower_components',
-            src: ['**/*'],
+            src: ['**/*.min.js','**/*.css','**/fonts/*', '**/*.cookie.js', '**/*.map'],
             dest: '.tmp/public/vendor/',
             expand:true
           }
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         },
           {
             cwd: './bower_components',
-            src: ['**/*'],
+            src: ['**/*.min.js','**/*.css', '**/fonts/*', '**/*.cookie.js', '**/*.map'],
             dest: 'www/vendor/',
             expand: true
           }
@@ -445,7 +445,6 @@ module.exports = function (grunt) {
 
   // When Sails is lifted:
   grunt.registerTask('default', [
-    'bower',
     'compileAssets',
     'linkAssets',
     'watch'
@@ -483,12 +482,12 @@ module.exports = function (grunt) {
 
   // When sails is lifted in production
   grunt.registerTask('prod', [
-    'bower',
     'clean:dev',
     'jst:dev',
     'less:dev',
     'copy:config',
     'copy:dev',
+    'copy:build',
     'coffee:dev',
     'concat',
     'uglify',

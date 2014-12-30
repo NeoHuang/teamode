@@ -33,6 +33,7 @@ var when = require('when');
     var newList = {
       name:req.param('name'),
       boardId: req.param('boardId'),
+      creatorId: req.user.id
     };
     if (newList.name && newList.boardId){
       List.add(newList).done(function(list){
@@ -48,7 +49,7 @@ var when = require('when');
 
 changeOrder: function(req, res){
   var order = req.param('order').split(',').map(function(e){
-    return parseInt(e);
+    return e.trim();
   });
   var orderData = {
     boardId: req.param('boardId'),
@@ -59,7 +60,7 @@ changeOrder: function(req, res){
       var sortedOrder = orderData.order.slice(0);
       sortedOrder.sort();
       var sortedList = lists.map(function(l){
-        return l.id;
+        return l.id.toString();
       }).sort();
 
       if (JSON.stringify(sortedOrder) != JSON.stringify(sortedList)){

@@ -57,7 +57,7 @@ dashboardApp.controller('BoardShowCtrl', ['$scope', '$http', 'httpService', func
 
 			var movedData = ui.item.sortable.moved;
 			//find the target list id
-			var toList = parseInt(ui.item.sortable.droptarget.data('list-id'));
+			var toList = ui.item.sortable.droptarget.data('list-id');
 			var fromList = null;
 			//if it's moved from one list to another
 			if (movedData){
