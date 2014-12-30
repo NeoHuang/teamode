@@ -15,3 +15,9 @@ sudo bower install
 sails lift
 ```
 
+#example
+
+![Alt text](/imgs/teamode.png)
+
+[Live Demo](http://teamode.de)
+
