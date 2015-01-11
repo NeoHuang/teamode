@@ -9,9 +9,9 @@ Teamode is an agile team collaboration platform
 
 Teamode is built with node.js and sails.js. The frontend package is managed by bower. After installing node.js simply run
 ```sh
-sudo install -g sails
-sudo npm install
-sudo bower install
+npm -g sails
+npm install
+bower install
 sails lift
 ```
 
